@@ -1,5 +1,5 @@
 export default function Register() {
   return (
-    <div>Register Page</div>
+    <main className="flex justify-center items center min-h-screen">Register Page</main>
   )
 }
