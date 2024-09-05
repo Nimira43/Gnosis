@@ -1,6 +1,8 @@
 'use client'
 
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { Form, useForm } from "react-hook-form"
 import { z } from "zod"
 
 const formSchema = z.object({
@@ -10,6 +12,19 @@ const formSchema = z.object({
 })
 
 export default function Register() {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+      passwordConfirm: ""
+    }
+  })
+
+  const handleSubmit = async () => {
+
+  }
+
   return (
     <main className="flex justify-center items-center min-h-screen">
       <Card className="w-[350px]">
@@ -21,7 +36,12 @@ export default function Register() {
             Register for a new account
           </CardDescription>
         </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(handleSubmit)}></form>
 
+          </Form>
+        </CardContent>
       </Card>
     </main>
   )
