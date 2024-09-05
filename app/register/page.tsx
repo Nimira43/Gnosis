@@ -21,8 +21,7 @@ export default function Register() {
     }
   })
 
-  const handleSubmit = async () => {
-
+  const handleSubmit = async (data: z.infer<typeof formSchema>) => {
   }
 
   return (
