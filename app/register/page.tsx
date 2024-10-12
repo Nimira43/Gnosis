@@ -6,7 +6,8 @@ import {
   CardDescription, 
   CardHeader, 
   CardTitle } from "@/components/ui/card"
-import { Form } from "@/components/ui/form"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -29,6 +30,7 @@ export default function Register() {
   })
 
   const handleSubmit = async (data: z.infer<typeof formSchema>) => {
+
   }
 
   return (
@@ -40,7 +42,23 @@ export default function Register() {
         </CardHeader>
         <CardContent>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(handleSubmit)}></form>
+            <form onSubmit={form.handleSubmit(handleSubmit)}>
+              <FormField 
+                control={form.control} 
+                name="email" 
+                render={({field}) => (
+                  <FormItem>
+                    <FormLabel>
+                      Email
+                    </FormLabel>
+                    <FormControl>
+                      <Input {...field} type="email" />                    
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </form>
           </Form>
         </CardContent>
       </Card>
