@@ -1,18 +1,18 @@
 'use client'
 
-import { Button } from "@/components/ui/button"
+import { Button } from '@/components/ui/button'
 import { 
   Card, 
   CardContent, 
   CardDescription, 
   CardHeader, 
-  CardTitle } from "@/components/ui/card"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
+  CardTitle } from '@/components/ui/card'
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -24,9 +24,9 @@ export default function Register() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
-      password: "",
-      passwordConfirm: ""
+      email: '',
+      password: '',
+      passwordConfirm: ''
     }
   })
 
@@ -35,25 +35,28 @@ export default function Register() {
   }
 
   return (
-    <main className="flex justify-center items-center min-h-screen">
-      <Card className="w-[350px]">
+    <main className='flex justify-center items-center min-h-screen'>
+      <Card className='w-[350px]'>
         <CardHeader>
           <CardTitle>Register</CardTitle>
           <CardDescription>Register for a new account</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(handleSubmit)}>
+            <form 
+              onSubmit={form.handleSubmit(handleSubmit)}
+              className='flex flex-col gap-2'
+            >
               <FormField 
                 control={form.control} 
-                name="email" 
+                name='email' 
                 render={({field}) => (
                   <FormItem>
                     <FormLabel>
                       Email
                     </FormLabel>
                     <FormControl>
-                      <Input {...field} type="email" />                    
+                      <Input {...field} type='email' />                    
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -61,14 +64,14 @@ export default function Register() {
               />
               <FormField 
                 control={form.control} 
-                name="password" 
+                name='password' 
                 render={({field}) => (
                   <FormItem>
                     <FormLabel>
                       Password
                     </FormLabel>
                     <FormControl>
-                      <Input {...field} type="password" />                    
+                      <Input {...field} type='password' />                    
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -76,20 +79,20 @@ export default function Register() {
               />
               <FormField 
                 control={form.control} 
-                name="passwordConfirm" 
+                name='passwordConfirm' 
                 render={({field}) => (
                   <FormItem>
                     <FormLabel>
                       Password Confirm
                     </FormLabel>
                     <FormControl>
-                      <Input {...field} type="password" />                    
+                      <Input {...field} type='password' />                    
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              <Button type="submit">Register</Button>
+              <Button type='submit'>Register</Button>
             </form>
           </Form>
         </CardContent>
