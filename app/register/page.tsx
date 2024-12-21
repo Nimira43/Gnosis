@@ -20,6 +20,7 @@ const formSchema = z.object({
 }).and(passwordMatchSchema)
 
 export default function Register() {
+  
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
