@@ -8,8 +8,8 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'NimiraTech Login',
-  description: 'Authentication App',
+  title: 'Gnosis',
+  description: 'Authentication application using Next JS, TypeScript, Tailwind, Shadcn UI, Zode and Neon',
 };
 
 export default function RootLayout({
