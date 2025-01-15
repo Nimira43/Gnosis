@@ -22,4 +22,5 @@ export const registerUser = async({email, password, passwordConfirm}: {
       message: newUserValidation.error.issues[0]?.message ?? 'An Error Occurred'
     }
   }
+  
 }
