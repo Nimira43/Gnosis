@@ -36,6 +36,7 @@ export default function Register() {
       password: data.password,
       passwordConfirm: data.passwordConfirm
     })
+    console.log(response)
   }
 
   return (
