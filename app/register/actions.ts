@@ -21,4 +21,10 @@ export const registerUser = async ({
     passwordConfirm
   })
 
+  if (!newUserValidation.success) {
+    return {
+      error: true,
+      message: newUserValidation.error.issues[0]?.message ?? 'An error occurred.'
+    }
+  }
 }
