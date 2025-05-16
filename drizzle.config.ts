@@ -6,3 +6,7 @@ dotenv.config({
   path: '.env.local',
 })
 
+export default defineConfig({
+  
+})
+
