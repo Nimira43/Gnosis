@@ -32,6 +32,7 @@ export const registerUser = async ({
       message: newUserValidation.error.issues[0]?.message ?? 'An error occurred.'
     }
   }
-
+  
+  const hashedPassword = await hash(password, 10)
 
 }
