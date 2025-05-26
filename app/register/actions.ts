@@ -42,8 +42,12 @@ export const registerUser = async ({
     if (e.code === '23505') {
       return {
         error: true,
-        message: 'An account is already registered with that emil address.'
+        message: 'An account is already registered with that email address.'
       }
+    }
+    return {
+      error: true,
+      message: 'Oh no! Something went wrong.'
     }
   }
 }
