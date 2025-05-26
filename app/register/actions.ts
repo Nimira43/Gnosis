@@ -38,5 +38,12 @@ export const registerUser = async ({
       email,
       password: hashedPassword
     })
-  } catch {}
+  } catch (e: any) {
+    if (e.code === '23505') {
+      return {
+        error: true,
+        message: 'An account is already registered with that emil address.'
+      }
+    }
+  }
 }
