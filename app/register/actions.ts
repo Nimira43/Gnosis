@@ -1,6 +1,5 @@
 'use server'
 
-// import db from '@/db/drizzle'
 import { passwordMatchSchema } from '@/validation/passwordMatchSchema'
 import { z } from 'zod'
 import { hash } from 'bcryptjs'
@@ -15,30 +14,29 @@ export const registerUser = async ({
   email: string
   password: string
   passwordConfirm: string
-  }) => {
-  // const result = await db.select()
+}) => {
+  try {
+    const newUserSchema = z.object({
+      email: z.string().email(),
+    }).and(passwordMatchSchema)
   
-  const newUserSchema = z.object({
-    email: z.string().email(),
-  }).and(passwordMatchSchema)  
-  
-  const newUserValidation = newUserSchema.safeParse({
-    email,
-    password,
-    passwordConfirm
-  })
+    const newUserValidation = newUserSchema.safeParse({
+      email,
+      password,
+      passwordConfirm
+    })
 
-  if (!newUserValidation.success) {
-    return {
-      error: true,
-      message: newUserValidation.error.issues[0]?.message ?? 'An error occurred.'
+    if (!newUserValidation.success) {
+      return {
+        error: true,
+        message: newUserValidation.error.issues[0]?.message ?? 'An error occurred.'
+      }
     }
-  }
   
-  const hashedPassword = await hash(password, 10)
-
-  await db.insert(users).values({
-    email,
-    password: hashedPassword
-  })
+    const hashedPassword = await hash(password, 10)
+    await db.insert(users).values({
+      email,
+      password: hashedPassword
+    })
+  } catch {}
 }
