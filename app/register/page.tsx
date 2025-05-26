@@ -55,7 +55,10 @@ export default function Register() {
         <CardContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)}>
-              <fieldset className='flex flex-col gap-2'>              
+              <fieldset
+                disabled={form.formState.isSubmitting}  
+                className='flex flex-col gap-2'
+              >              
                 <FormField 
                   control={form.control} 
                   name='email' 
