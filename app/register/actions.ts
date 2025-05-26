@@ -3,6 +3,7 @@
 // import db from '@/db/drizzle'
 import { passwordMatchSchema } from '@/validation/passwordMatchSchema'
 import { z } from 'zod'
+import { hash } from 'bcryptjs'
 
 export const registerUser = async ({
   email,
@@ -31,4 +32,6 @@ export const registerUser = async ({
       message: newUserValidation.error.issues[0]?.message ?? 'An error occurred.'
     }
   }
+
+
 }
