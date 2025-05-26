@@ -4,6 +4,8 @@
 import { passwordMatchSchema } from '@/validation/passwordMatchSchema'
 import { z } from 'zod'
 import { hash } from 'bcryptjs'
+import db from '@/db/drizzle'
+import { users } from '@/db/usersSchema'
 
 export const registerUser = async ({
   email,
@@ -35,4 +37,8 @@ export const registerUser = async ({
   
   const hashedPassword = await hash(password, 10)
 
+  await db.insert(users).values({
+    email,
+    password: hashedPassword
+  })
 }
