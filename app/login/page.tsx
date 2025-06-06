@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card'
+import { Card, CardHeader, CardTitle, CardContent, CardDescription, CardFooter } from '@/components/ui/card'
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form'
 import { passwordSchema } from '@/validation/passwordSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -10,6 +10,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { loginWithCredentials } from './actions'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -99,6 +100,17 @@ export default function Login() {
             </form>
           </Form>
         </CardContent>
+        <CardFooter>
+          <div className='text-muted-foreground text-sm'>
+            Do not have an account?{' '}
+            <Link
+            className='text-primary' 
+              href='/register'
+              >
+                Register
+              </Link>
+          </div>
+        </CardFooter>
       </Card>
     </main>
   )
