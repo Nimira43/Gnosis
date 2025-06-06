@@ -75,7 +75,12 @@ export default function Login() {
                     </FormItem>
                   )}
                 />
-                <Button type='submit'>Login</Button>
+                <Button 
+                  className='uppercase'
+                  type='submit'
+                >
+                  Login
+                </Button>
               </fieldset>
             </form>
           </Form>

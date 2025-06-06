@@ -6,6 +6,7 @@ import { logout } from './actions'
 export default function LogoutButton() {
   return (
     <Button
+    className='uppercase'
       size='sm'
       onClick={async () => {
         await logout()

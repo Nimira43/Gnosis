@@ -119,7 +119,12 @@ export default function Register() {
                       </FormItem>
                     )}
                   />
-                  <Button type='submit'>Register</Button>
+                  <Button 
+                    className='uppercase'
+                    type='submit'
+                  >
+                    Register
+                  </Button>
                 </fieldset>
               </form>
             </Form>

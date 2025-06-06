@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import './globals.css'
 import { auth } from '@/auth'
+import LogoutButton from './logout-button'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -26,10 +27,9 @@ export default async function RootLayout({
           {session?.user?.email ?
             <div>
               {session.user.email}
-              
+              <LogoutButton />
             </div> 
             : 
-          
             'No user logged in'
           }
         </div>
