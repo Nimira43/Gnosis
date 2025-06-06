@@ -22,7 +22,17 @@ export default async function RootLayout({
   return (
     <html lang='en'>
       <body className={poppins.className}>
-        <div>{session?.user?.email ?? 'No user logged in'}</div>
+        <div>
+          {session?.user?.email ?
+            <div>
+              {session.user.email}
+              
+            </div> 
+            : 
+          
+            'No user logged in'
+          }
+        </div>
         {children}
       </body>
     </html>
