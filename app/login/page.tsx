@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card'
 import { FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form'
 import { passwordSchema } from '@/validation/passwordSchema'
+import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
 import { Input } from 'postcss'
 import { Form, useForm } from 'react-hook-form'
@@ -13,8 +14,8 @@ const formSchema = z.object({
 })
 
 export default function Login() {
-  const form = useForm<z.infer<typeof formSchema>>()
-
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema)  })
   
   return (
     
