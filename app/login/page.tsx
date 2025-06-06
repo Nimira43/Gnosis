@@ -32,7 +32,9 @@ export default function Login() {
       password: data.password
     }) 
     if (response?.error) {
-
+      form.setError('root', {
+        message: response.message,
+      })
     } else {
       router.push('/my-account')
     }
@@ -82,6 +84,11 @@ export default function Login() {
                     </FormItem>
                   )}
                 />
+                {!!form.formState.errors.root?.message && (
+                  <FormMessage>
+                    {form.formState.errors.root.message}
+                  </FormMessage>
+                )}
                 <Button 
                   className='uppercase'
                   type='submit'
