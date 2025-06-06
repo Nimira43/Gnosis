@@ -1,9 +1,10 @@
+'use client'
+
 import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card'
 import { FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form'
 import { passwordSchema } from '@/validation/passwordSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
-import Link from 'next/link'
 import { Input } from 'postcss'
 import { Form, useForm } from 'react-hook-form'
 import { z } from 'zod'
