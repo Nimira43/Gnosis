@@ -13,7 +13,7 @@ const formSchema = z.object({
 })
 
 export default function Login() {
-  const form = useForm()
+  const form = useForm<z.infer<typeof formSchema>>()
 
   
   return (
