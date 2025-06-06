@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Input } from '@/components/ui/input'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
+import { loginWithCredentials } from './actions'
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -24,19 +25,11 @@ export default function Login() {
   })
 
   const handleSubmit = async (data: z.infer<typeof formSchema>) => {
-      // const response = await registerUser({
-      //   email: data.email,
-      //   password: data.password,
-      //   passwordConfirm: data.passwordConfirm
-      // })
-  
-      // if (response?.error) {
-      //   form.setError('email', {
-      //     message: response?.message
-      //   })
-      // }
-      // console.log(response)
-    }
+    await loginWithCredentials({
+      email: data.email,
+      password: data.password
+    }) 
+  }
   
   return (
     <main className='flex justify-center items-center min-h-screen'>
