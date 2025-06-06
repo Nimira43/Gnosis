@@ -1,5 +1,6 @@
 'use server'
 
+import { signIn } from '@/auth'
 import { passwordSchema } from '@/validation/passwordSchema'
 import { z } from 'zod'
 
@@ -26,6 +27,14 @@ export const loginWithCredentials = async({
       message: loginValidation.error?.issues[0]?.message ?? 'An error occurred.'
     }
   }
+  try {
+    await signIn('credentials', {
+      email,
+      password,
+      redirect: false
+    })
+  } catch(e) {
+    
+  }
 
-  
 }
