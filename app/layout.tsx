@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import './globals.css'
+import { auth } from '@/auth';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -12,14 +13,18 @@ export const metadata: Metadata = {
   description: 'Authentication application using Next JS, TypeScript, Tailwind, Shadcn UI, Zode and Neon',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth()
   return (
     <html lang='en'>
-      <body className={poppins.className}>{children}</body>
+      <body className={poppins.className}>
+        <div>{session?.user?.email ?? 'No user logged in'}</div>
+        {children}
+      </body>
     </html>
   )
 }
