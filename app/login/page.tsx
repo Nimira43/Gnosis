@@ -100,7 +100,7 @@ export default function Login() {
             </form>
           </Form>
         </CardContent>
-        <CardFooter>
+        <CardFooter className='flex-col gap-2'>
           <div className='text-muted-foreground text-sm'>
             Do not have an account?{' '}
             <Link
@@ -108,6 +108,15 @@ export default function Login() {
               href='/register'
               >
                 Register
+              </Link>
+          </div>
+          <div className='text-muted-foreground text-sm'>
+            Forgot password?{' '}
+            <Link
+              className='text-primary' 
+              href='/password-reset'
+              >
+                Reset
               </Link>
           </div>
         </CardFooter>
