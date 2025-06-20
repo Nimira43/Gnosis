@@ -32,4 +32,11 @@ export const changePassword = async ({
     password,
     passwordConfirm
   })
+
+  if (passwordValidation?.error) {
+    return {
+      error: true,
+      message: passwordValidation?.error.issues?.[0]
+    }
+  }
 }
