@@ -26,4 +26,10 @@ export const changePassword = async ({
   const formSchema = z.object({
     currentPassword: passwordSchema
   }).and(passwordMatchSchema)
+
+  const passwordValidation = formSchema.safeParse({
+    currentPassword,
+    password,
+    passwordConfirm
+  })
 }
