@@ -36,7 +36,7 @@ export const changePassword = async ({
   if (passwordValidation?.error) {
     return {
       error: true,
-      message: passwordValidation?.error.issues?.[0]
+      message: passwordValidation?.error.issues?.[0]?.message ?? 'An error occurred.'
     }
   }
 }
