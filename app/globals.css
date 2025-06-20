@@ -12,6 +12,10 @@
   font-family: 'Akronim', cursive;
 }
 
+.btn-hover {
+  transition: all 0.5s ease-in;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
