@@ -1,5 +1,9 @@
-export default function LoggedOutLayout() {
+export default function LoggedOutLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <div>LoggedOutLayout</div>
+    children
   )
 }
