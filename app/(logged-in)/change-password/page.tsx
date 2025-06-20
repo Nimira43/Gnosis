@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import ChangePasswordForm from './change-password-form'
 
 export default function ChangePassword() {
@@ -11,8 +11,9 @@ export default function ChangePassword() {
           Change Password
         </CardTitle>
       </CardHeader>
-      <ChangePasswordForm />
-      
+      <CardContent>
+        <ChangePasswordForm />
+      </CardContent>
     </Card>
   )
 }
