@@ -8,8 +8,8 @@ export default function LoggedInLayout({
 }) {
   return (
     <div className='min-h-screen flex flex-col'>
-      <nav className='bg-main-light '>
-        <ul>
+      <nav className='bg-main-light flex justify-between p-4 items-center'>
+        <ul className='flex gap-4'>
           <li>
             <Link 
               href='/my-account' 
