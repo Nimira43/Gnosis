@@ -8,6 +8,11 @@
   font-weight: 300;
 }
 
+body {
+  background-color: #f1e8e6;
+  color: #333;
+}
+
 .logo {
   font-family: 'Akronim', cursive;
 }

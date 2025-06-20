@@ -31,7 +31,9 @@ export default function LoggedInLayout({
           <LogoutButton />
         </div>
       </nav>
-      {children}  
+      <div className='flex-1 flex justify-center items-center'>
+        {children}
+      </div>
     </div>
   )
 }
