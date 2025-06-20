@@ -111,7 +111,7 @@ export default function Register() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>
-                          Password Confirm
+                          Confirm Password
                         </FormLabel>
                         <FormControl>
                           <Input {...field} type='password' />

@@ -55,7 +55,7 @@ export default function ChangePasswordForm() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>
-                  Password
+                  New Password
                 </FormLabel>
                 <FormControl>
                   <Input {...field} type='password' />
@@ -70,7 +70,7 @@ export default function ChangePasswordForm() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>
-                  Password Confirm
+                  Confirm Password
                 </FormLabel>
                 <FormControl>
                   <Input {...field} type='password' />
