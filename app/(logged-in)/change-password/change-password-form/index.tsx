@@ -1,5 +1,9 @@
 'use client'
 
+import { z } from 'zod'
+
+const formSchema = z.object({})
+
 export default function ChangePasswordForm() {
   return (
     <div>ChangePasswordForm</div>
@@ -7,21 +11,3 @@ export default function ChangePasswordForm() {
 }
 
 
-{/* <CardContent>
-        <Label>Current Password</Label>
-        <div className='font-normal text-sm'>
-          BadPasswordPlaceholder
-        </div>
-      </CardContent>
-      <CardContent>
-        <Label>New Password</Label>
-        <div className='font-normal text-sm'>
-          WorstPasswordPlaceholder
-        </div>
-      </CardContent>
-      <CardContent>
-        <Label>Confirm Password</Label>
-        <div className='font-normal text-sm'>
-          WorstPasswordPlaceholder
-        </div>
-      </CardContent> */}
