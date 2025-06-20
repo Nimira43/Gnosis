@@ -13,8 +13,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       }
       return token
     },
-    session() {
-
+    session({session, token}) {
+      session.user.id = token.id as string
+      return session
     }
   },
   providers: [
