@@ -43,7 +43,7 @@ export default function ChangePasswordForm() {
                   Current Password
                 </FormLabel>
                 <FormControl>
-                  <Input {...field} type='email' />
+                  <Input {...field} type='password' />
                 </FormControl>
                 <FormMessage />
               </FormItem>
