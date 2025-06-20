@@ -6,6 +6,14 @@ import { users } from './db/usersSchema'
 import { compare } from 'bcryptjs'
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  callbacks: {
+    jwt() {
+
+    },
+    session() {
+
+    }
+  },
   providers: [
     Credentials({
       credentials: {
