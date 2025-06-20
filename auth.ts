@@ -7,8 +7,11 @@ import { compare } from 'bcryptjs'
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
-    jwt() {
-
+    jwt({token, user}) {
+      if (user) {
+        token.id = user.id
+      }
+      return token
     },
     session() {
 
