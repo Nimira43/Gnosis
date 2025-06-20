@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Label } from '@/components/ui/label'
+import { Card, CardHeader, CardTitle } from '@/components/ui/card'
+import ChangePasswordForm from './change-password-form'
 
 export default function ChangePassword() {
   return (
@@ -12,24 +12,7 @@ export default function ChangePassword() {
         </CardTitle>
       </CardHeader>
       <ChangePasswordForm />
-      <CardContent>
-        <Label>Current Password</Label>
-        <div className='font-normal text-sm'>
-          BadPasswordPlaceholder
-        </div>
-      </CardContent>
-      <CardContent>
-        <Label>New Password</Label>
-        <div className='font-normal text-sm'>
-          WorstPasswordPlaceholder
-        </div>
-      </CardContent>
-      <CardContent>
-        <Label>Confirm Password</Label>
-        <div className='font-normal text-sm'>
-          WorstPasswordPlaceholder
-        </div>
-      </CardContent>
+      
     </Card>
   )
 }
