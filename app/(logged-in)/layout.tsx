@@ -4,8 +4,8 @@ export default function LoggedInLayout({
   children: React.ReactNode
 }) {
   return (
-    <div>
-      LoggedInLayout
+    <div className='min-h-screen flex flex-col'>
+      <nav></nav>
       {children}  
     </div>
   )
