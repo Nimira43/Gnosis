@@ -23,7 +23,7 @@ export default function ChangePasswordForm() {
     },
   })
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (data: z.infer<typeof formSchema>) => {
 
   }
 
@@ -36,11 +36,11 @@ export default function ChangePasswordForm() {
         >
           <FormField
             control={form.control}
-            name='email'
+            name='currentPassword'
             render={({ field }) => (
               <FormItem>
                 <FormLabel>
-                  Email
+                  Current Password
                 </FormLabel>
                 <FormControl>
                   <Input {...field} type='email' />
@@ -83,7 +83,7 @@ export default function ChangePasswordForm() {
             className='uppercase'
             type='submit'
           >
-            Register
+            Submit
           </Button>
         </fieldset>
       </form>
