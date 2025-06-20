@@ -12,7 +12,12 @@ const formSchema = z.object({
 
 export default function ChangePasswordForm() {
   const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema)
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      currentPassword: '',
+      password: '',
+      passwordConfirm: ''
+    }
   })
 
   return (
