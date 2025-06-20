@@ -5,6 +5,7 @@ import db from '@/db/drizzle'
 import { users } from '@/db/usersSchema'
 import { passwordMatchSchema } from '@/validation/passwordMatchSchema'
 import { passwordSchema } from '@/validation/passwordSchema'
+import { compare } from 'bcryptjs'
 import { eq } from 'drizzle-orm'
 import { z } from 'zod'
 
@@ -47,4 +48,22 @@ export const changePassword = async ({
     .select()
     .from(users)
     .where(eq(users.id, parseInt(session.user.id)))
+
+  if (!user) {
+    return {
+      error: true,
+      message: 'User not found.'
+    }
+  }
+
+  const passwordMatch = await compare(currentPassword, user.password!)
+
+  if (!passwordMatch) {
+    return {
+      error: true,
+      message: 'Current password is incorrect.'
+    }
+  }
+
+  
 }
