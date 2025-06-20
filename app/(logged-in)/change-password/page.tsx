@@ -11,6 +11,7 @@ export default function ChangePassword() {
           Change Password
         </CardTitle>
       </CardHeader>
+      <ChangePasswordForm />
       <CardContent>
         <Label>Current Password</Label>
         <div className='font-normal text-sm'>
