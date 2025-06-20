@@ -23,6 +23,10 @@ export default function ChangePasswordForm() {
     },
   })
 
+  const handleSubmit = async () => {
+
+  }
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)}>
