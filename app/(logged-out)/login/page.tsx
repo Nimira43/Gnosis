@@ -43,7 +43,7 @@ export default function Login() {
   
   return (
     <main className='flex justify-center items-center min-h-screen'>
-      <Card className='w-[350px]'>
+      <Card className='w-[350px] bg-light'>
         <CardHeader>
           <CardTitle className='uppercase'>Login</CardTitle>
           <CardDescription>Login to your new account.</CardDescription>
