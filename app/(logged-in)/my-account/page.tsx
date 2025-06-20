@@ -6,7 +6,7 @@ export default async function MyAccount() {
   const session = await auth()
   
   return (
-    <Card className='bg-light w-[350px]'>
+    <Card className='bg-light-extra w-[350px]'>
       <CardHeader>
         <CardTitle 
           className='font-medium uppercase text-center'
