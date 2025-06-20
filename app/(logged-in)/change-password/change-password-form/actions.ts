@@ -1,8 +1,11 @@
 'use server'
 
 import { auth } from '@/auth'
+import db from '@/db/drizzle'
+import { users } from '@/db/usersSchema'
 import { passwordMatchSchema } from '@/validation/passwordMatchSchema'
 import { passwordSchema } from '@/validation/passwordSchema'
+import { eq } from 'drizzle-orm'
 import { z } from 'zod'
 
 export const changePassword = async ({
@@ -19,7 +22,7 @@ export const changePassword = async ({
   if(!session?.user?.id) {
     return {
       error: true,
-      mmessage: 'You must be logged in to change you password.'
+      message: 'You must be logged in to change your password.'
     }
   }
 
@@ -39,4 +42,9 @@ export const changePassword = async ({
       message: passwordValidation?.error.issues?.[0]?.message ?? 'An error occurred.'
     }
   }
+
+  const [user] = await db
+    .select()
+    .from(users)
+    .where(eq(users.id, parseInt(session.user.id)))
 }
