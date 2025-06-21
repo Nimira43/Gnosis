@@ -9,12 +9,15 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { changePassword } from './actions'
+import { useToast } from '@/hooks/use-toast'
 
 const formSchema = z.object({
   currentPassword: passwordSchema
 }).and(passwordMatchSchema)
 
 export default function ChangePasswordForm() {
+  const {toast} = useToast()
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -35,6 +38,12 @@ export default function ChangePasswordForm() {
       form.setError('root', {
         message: response.message
       })
+    } else {
+      toast({
+        title: 'Password Change',
+        description: 'Password has been updated successfully.'
+      })
+      form.reset()
     }
   }
 
