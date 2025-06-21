@@ -30,6 +30,12 @@ export default function ChangePasswordForm() {
       password: data.password,
       passwordConfirm: data.passwordConfirm
     })
+
+    if (response?.error) {
+      form.setError('root', {
+        message: response.message
+      })
+    }
   }
 
   return (
