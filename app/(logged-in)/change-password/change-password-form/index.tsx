@@ -40,8 +40,9 @@ export default function ChangePasswordForm() {
       })
     } else {
       toast({
-        title: 'Password Change',
-        description: 'Password has been updated successfully.'
+        title: 'Password Changed',
+        description: 'Password has been updated successfully.',
+        className: 'bg-green-500 text-white'
       })
       form.reset()
     }
