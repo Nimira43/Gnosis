@@ -8,6 +8,7 @@ import { passwordSchema } from '@/validation/passwordSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
+import { changePassword } from './actions'
 
 const formSchema = z.object({
   currentPassword: passwordSchema
@@ -24,7 +25,11 @@ export default function ChangePasswordForm() {
   })
 
   const handleSubmit = async (data: z.infer<typeof formSchema>) => {
-
+    const response = await changePassword({
+      currentPassword: data.currentPassword,
+      password: data.password,
+      passwordConfirm: data.passwordConfirm
+    })
   }
 
   return (

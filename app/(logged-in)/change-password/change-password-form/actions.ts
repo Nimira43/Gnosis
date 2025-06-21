@@ -5,7 +5,7 @@ import db from '@/db/drizzle'
 import { users } from '@/db/usersSchema'
 import { passwordMatchSchema } from '@/validation/passwordMatchSchema'
 import { passwordSchema } from '@/validation/passwordSchema'
-import { compare } from 'bcryptjs'
+import { compare, hash } from 'bcryptjs'
 import { eq } from 'drizzle-orm'
 import { z } from 'zod'
 
@@ -65,5 +65,9 @@ export const changePassword = async ({
     }
   }
 
-  
+  const hashedPassword = await hash(password, 10)
+
+  await db.update(users).set({
+    password: hashedPassword
+  }).where(eq(users.id, parseInt(session.user.id)))
 }
