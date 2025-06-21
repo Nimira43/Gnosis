@@ -90,6 +90,11 @@ export default function ChangePasswordForm() {
               </FormItem>
             )}
           />
+          {!!form.formState.errors.root?.message &&
+            <FormMessage>
+              {form.formState.errors.root?.message}
+            </FormMessage>
+          }
           <Button
             className='uppercase'
             type='submit'
