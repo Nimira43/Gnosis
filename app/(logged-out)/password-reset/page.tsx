@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
 
 export default function PasswordReset() {
   return (
@@ -37,24 +38,9 @@ export default function PasswordReset() {
                     </FormItem>
                   )}
                 />
-                <FormField
-                  control={form.control}
-                  name='password'
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>
-                        Password
-                      </FormLabel>
-                      <FormControl>
-                        {/* <Input {...field} type='password' /> */}
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                {/* {!!form.formState.errors.root?.message && ( */}
+                {!!form.formState.errors.root?.message && (
                   <FormMessage>
-                    {/* {form.formState.errors.root.message} */}
+                    {form.formState.errors.root.message}
                   </FormMessage>
                 )}
                 <Button 
