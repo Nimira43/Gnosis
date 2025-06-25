@@ -116,7 +116,7 @@ export default function Login() {
               className='text-primary' 
               href='/password-reset'
               >
-                Reset
+                Reset 
               </Link>
           </div>
         </CardFooter>
