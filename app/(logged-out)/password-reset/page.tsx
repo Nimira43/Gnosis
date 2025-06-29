@@ -20,6 +20,8 @@ export default function PasswordReset() {
     }
   })
 
+  const handleSubmit = async (data: z.infer<typeof formSchema>) => {}
+
   return (
     <Card>
       <CardHeader>
