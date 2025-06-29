@@ -31,7 +31,8 @@ export default function Login() {
     const response = await loginWithCredentials({
       email: data.email,
       password: data.password
-    }) 
+    })
+  
     if (response?.error) {
       form.setError('root', {
         message: response.message,
@@ -40,7 +41,7 @@ export default function Login() {
       router.push('/my-account')
     }
   }
-  
+
   return (
     <main className='flex justify-center items-center min-h-screen'>
       <Card className='w-[350px] bg-light-extra'>

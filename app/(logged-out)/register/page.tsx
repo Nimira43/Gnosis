@@ -21,8 +21,7 @@ const formSchema = z.object({
   email: z.string().email(),
 }).and(passwordMatchSchema)
 
-export default function Register() {
-  
+export default function Register() { 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
