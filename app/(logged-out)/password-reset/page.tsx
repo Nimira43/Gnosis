@@ -23,52 +23,55 @@ export default function PasswordReset() {
   const handleSubmit = async (data: z.infer<typeof formSchema>) => {}
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>
-          Password Reset
-        </CardTitle>
-        <CardDescription>
-          Enter your email address to reset your password.
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Form {...form}>
-            <form onSubmit={form.handleSubmit(handleSubmit)}>
-              <fieldset
-                disabled={form.formState.isSubmitting}
-                className='flex flex-col gap-2'
-              >
-                <FormField
-                  control={form.control}
-                  name='email'
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>
-                        Email
-                      </FormLabel>
-                      <FormControl>
-                        <Input {...field} type='email' />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                {!!form.formState.errors.root?.message && (
-                  <FormMessage>
-                    {form.formState.errors.root.message}
-                  </FormMessage>
-                )}
-                <Button 
-                  className='uppercase'
-                  type='submit'
+    <main className='flex justify-center items-center min-h-screen'>
+      <Card className='w-[350px]'>
+        <CardHeader>
+          <CardTitle>
+            Password Reset
+          </CardTitle>
+          <CardDescription>
+            Enter your email address to reset your password.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+              <form onSubmit={form.handleSubmit(handleSubmit)}>
+                <fieldset
+                  disabled={form.formState.isSubmitting}
+                  className='flex flex-col gap-2'
                 >
-                  Login
-                </Button>
-              </fieldset>
-            </form>
-          </Form>
-      </CardContent>
-    </Card>
+                  <FormField
+                    control={form.control}
+                    name='email'
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>
+                          Email
+                        </FormLabel>
+                        <FormControl>
+                          <Input {...field} type='email' />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  {!!form.formState.errors.root?.message && (
+                    <FormMessage>
+                      {form.formState.errors.root.message}
+                    </FormMessage>
+                  )}
+                  <Button 
+                    className='uppercase'
+                    type='submit'
+                  >
+                    Login
+                  </Button>
+                </fieldset>
+              </form>
+            </Form>
+        </CardContent>
+      </Card>
+    </main>
+    
   )
 }
