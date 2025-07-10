@@ -1,10 +1,11 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { zodResolver } from '@hookform/resolvers/zod'
+import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
@@ -20,7 +21,9 @@ export default function PasswordReset() {
     }
   })
 
-  const handleSubmit = async (data: z.infer<typeof formSchema>) => {}
+  const handleSubmit = async (data: z.infer<typeof formSchema>) => {
+
+  }
 
   return (
     <main className='flex justify-center items-center min-h-screen'>
@@ -64,12 +67,23 @@ export default function PasswordReset() {
                     className='uppercase'
                     type='submit'
                   >
-                    Login
+                    Submit
                   </Button>
                 </fieldset>
               </form>
             </Form>
         </CardContent>
+        <CardFooter className='flex flex-col gap-2'>
+          <div>
+            Remember your password? 
+            <Link 
+              href='/login' 
+              className='uppercase pl-2 text-dark'
+            > 
+              Login     
+            </Link>
+          </div>
+        </CardFooter>
       </Card>
     </main>
     
