@@ -83,6 +83,15 @@ export default function PasswordReset() {
               Login     
             </Link>
           </div>
+          <div className='text-muted-foreground text-sm'>
+            {"Don\'t have an account? "}
+            <Link 
+              href='/login' 
+              className='text-muted-foreground uppercase'
+            > 
+              Register     
+            </Link>
+          </div>
         </CardFooter>
       </Card>
     </main>
