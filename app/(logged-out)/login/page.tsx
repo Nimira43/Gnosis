@@ -46,8 +46,12 @@ export default function Login() {
     <main className='flex justify-center items-center min-h-screen'>
       <Card className='w-[350px] bg-light-extra'>
         <CardHeader>
-          <CardTitle className='uppercase'>Login</CardTitle>
-          <CardDescription>Login to your new account.</CardDescription>
+          <CardTitle className='uppercase'>
+            Login
+          </CardTitle>
+          <CardDescription>
+            Login to your new account.
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -105,7 +109,7 @@ export default function Login() {
           <div className='text-muted-foreground text-sm'>
             Do not have an account?{' '}
             <Link
-            className='text-primary' 
+            className='text-muted-foreground uppercase' 
               href='/register'
               >
                 Register
@@ -114,7 +118,7 @@ export default function Login() {
           <div className='text-muted-foreground text-sm'>
             Forgot password?{' '}
             <Link
-              className='text-primary' 
+              className='text-muted-foreground uppercase' 
               href='/password-reset'
               >
                 Reset 

@@ -29,7 +29,7 @@ export default function PasswordReset() {
     <main className='flex justify-center items-center min-h-screen'>
       <Card className='w-[350px]'>
         <CardHeader>
-          <CardTitle>
+          <CardTitle className='uppercase'>
             Password Reset
           </CardTitle>
           <CardDescription>
@@ -74,11 +74,11 @@ export default function PasswordReset() {
             </Form>
         </CardContent>
         <CardFooter className='flex flex-col gap-2'>
-          <div>
-            Remember your password? 
+          <div className='text-muted-foreground text-sm'>
+            Remember your password?{' '}
             <Link 
               href='/login' 
-              className='uppercase pl-2 text-dark'
+              className='text-muted-foreground uppercase'
             > 
               Login     
             </Link>

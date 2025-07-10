@@ -64,8 +64,12 @@ export default function Register() {
       ) : ( 
         <Card className='w-[350px] bg-light-extra'>
           <CardHeader>
-            <CardTitle className='uppercase'>Register</CardTitle>
-            <CardDescription>Register for a new account.</CardDescription>
+            <CardTitle className='uppercase'>
+              Register
+            </CardTitle>
+            <CardDescription>
+              Register for a new account.
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <Form {...form}>
@@ -133,7 +137,7 @@ export default function Register() {
             <div className='text-muted-foreground text-sm'>
               Already have an account?{' '}
               <Link
-              className='text-primary' 
+              className='text-muted-foreground uppercase' 
                 href='/login'
                 >
                   Login
