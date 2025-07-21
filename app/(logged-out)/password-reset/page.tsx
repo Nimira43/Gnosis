@@ -19,7 +19,7 @@ export default function PasswordReset() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: searchParams.get('email') ?? ''
+      email: decodeURIComponent(searchParams.get('email') ?? '')
     }
   })
 
