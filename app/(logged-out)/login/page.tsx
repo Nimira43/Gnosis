@@ -42,6 +42,8 @@ export default function Login() {
     }
   }
 
+  const email = form.getValues('email')
+
   return (
     <main className='flex justify-center items-center min-h-screen'>
       <Card className='w-[350px] bg-light-extra'>

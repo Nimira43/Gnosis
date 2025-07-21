@@ -95,6 +95,5 @@ export default function PasswordReset() {
         </CardFooter>
       </Card>
     </main>
-    
   )
 }
