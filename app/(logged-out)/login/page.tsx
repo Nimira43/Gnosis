@@ -119,12 +119,18 @@ export default function Login() {
           </div>
           <div className='text-muted-foreground text-sm'>
             Forgot password?{' '}
-            <Link
-              className='text-muted-foreground uppercase' 
-              href='/password-reset'
-              >
-                Reset 
-              </Link>
+            <Link 
+              href={`
+                /password-reset${
+                  email 
+                    ? `?email=${encodeURIComponent(email)}` 
+                    : "" 
+                }
+              `}
+              className='text-muted-foreground uppercase'
+            >
+              Reset 
+            </Link>
           </div>
         </CardFooter>
       </Card>
