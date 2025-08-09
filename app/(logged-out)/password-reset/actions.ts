@@ -31,11 +31,19 @@ export const passwordReset = async (emailAddress: string) => {
     const passwordResetToken = randomBytes(32).toString('hex')
     const tokenExpiry = new Date(Date.now() + 3600000)
     
-    await db.insert(passwordResetTokens).values({
-      userId: user.id,
-      token: passwordResetToken,
-      tokenExpiry
-    })
-    
+    await db
+      .insert(passwordResetTokens)
+      .values({
+        userId: user.id,
+        token: passwordResetToken,
+        tokenExpiry
+      })
+      .onConflictDoUpdate({
+        target: passwordResetTokens.userId,
+        set: {
+          token: passwordResetToken,
+          tokenExpiry,
+        }
+      })
     console.log({passwordResetToken})
 }
