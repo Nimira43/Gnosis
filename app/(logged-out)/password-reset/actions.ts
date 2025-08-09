@@ -3,6 +3,7 @@
 import { auth } from '@/auth'
 import db from '@/db/drizzle'
 import { users } from '@/db/usersSchema'
+import { randomBytes } from 'crypto'
 import { eq } from 'drizzle-orm'
 
 export const passwordReset = async (emailAddress: string) => {
@@ -21,4 +22,10 @@ export const passwordReset = async (emailAddress: string) => {
     })
     .from(users)
     .where(eq(users.email, emailAddress))
+
+    if (!user) {
+      return
+    }
+
+    const passwordResetToken = randomBytes(32).toString('hex')
 }
