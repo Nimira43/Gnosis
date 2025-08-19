@@ -31,7 +31,10 @@ export default function PasswordReset() {
   return (
     <main className='flex justify-center items-center min-h-screen'>
       {form.formState.isSubmitSuccessful ? ( 
-        <Card className='w-[350px]'>
+        <Card className='w-[350px] text-center'>
+          <CardHeader>
+            <CardTitle className='uppercase font-medium'>Email Sent</CardTitle>
+          </CardHeader>
           <CardContent>
             Please check your emails at {form.getValues('email')} to find an email from us with instructions to reset your password.
           </CardContent>
