@@ -33,7 +33,7 @@ export default function PasswordReset() {
       {form.formState.isSubmitSuccessful ? ( 
         <Card className='w-[350px]'>
           <CardContent>
-            Please check your inbox or spam for {form.getValues('email')} to reset your password.
+            Please check your emails at {form.getValues('email')} to find an email from us with instructions to reset your password.
           </CardContent>
         </Card>
       ) : (
