@@ -31,12 +31,12 @@ export default function PasswordReset() {
   return (
     <main className='flex justify-center items-center min-h-screen'>
       {form.formState.isSubmitSuccessful ? ( 
-        <div>
-
-        </div>
-
+        <Card className='w-[350px]'>
+          <CardContent>
+            Please check your inbox or spam for {form.getValues('email')} to reset your password.
+          </CardContent>
+        </Card>
       ) : (
-   
         <Card className='w-[350px]'>
           <CardHeader>
             <CardTitle className='uppercase'>
