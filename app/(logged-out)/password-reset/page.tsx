@@ -30,6 +30,7 @@ export default function PasswordReset() {
 
   return (
     <main className='flex justify-center items-center min-h-screen'>
+    {form.formState.isSubmitSuccessful}
       <Card className='w-[350px]'>
         <CardHeader>
           <CardTitle className='uppercase'>
