@@ -36,7 +36,7 @@ export default function PasswordReset() {
             <CardTitle className='uppercase font-medium'>Email Sent</CardTitle>
           </CardHeader>
           <CardContent>
-            Please check your emails at {form.getValues('email')} to find an email from us with instructions to reset your password.
+            If you have an account with us at the provided email address please check your inbox or spam folders to find an email with instructions to reset your password.
           </CardContent>
         </Card>
       ) : (
