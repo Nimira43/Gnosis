@@ -11,7 +11,6 @@ export default async function LoggedOutLayout({
   if (!!session?.user?.id) {
     redirect('/my-account')
   }
-  
   return (
     children
   )
