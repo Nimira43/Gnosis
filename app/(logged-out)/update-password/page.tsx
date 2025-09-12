@@ -22,9 +22,14 @@ export default async function UpdatePassword({
             .token, token
         )
       )
-      const now = Date.now()
+    const now = Date.now()
 
-      if (!!passwordResetToken?.tokenExpiry && now < passwordResetToken.tokenExpiry.getTime())
+    if (
+      !!passwordResetToken?.tokenExpiry && 
+      now < passwordResetToken.tokenExpiry.getTime()
+    ) {
+      tokenIsValid = true
+    }
   }
 
   return (
