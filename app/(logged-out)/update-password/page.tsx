@@ -36,7 +36,7 @@ export default async function UpdatePassword({
 
   return (
     <main className='flex justify-center items-center min-h-screen'>
-      <Card>
+      <Card className='w-[350px] text-center'>
         <CardHeader>
           <CardTitle>
             {
