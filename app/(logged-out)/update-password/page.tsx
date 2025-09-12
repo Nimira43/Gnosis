@@ -38,7 +38,11 @@ export default async function UpdatePassword({
       <Card>
         <CardHeader>
           <CardTitle>
-            
+            {
+              tokenIsValid
+                ? 'Update password'
+                : 'Your password reset link is invalid or has expired.'
+            }
           </CardTitle>
         </CardHeader>
       </Card>
