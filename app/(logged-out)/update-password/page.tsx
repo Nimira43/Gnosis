@@ -1,3 +1,4 @@
+import { Card, CardHeader, CardTitle } from '@/components/ui/card'
 import db from '@/db/drizzle'
 import { passwordResetTokens } from '@/db/passwordResetTokensSchema'
 import { eq } from 'drizzle-orm'
@@ -33,6 +34,14 @@ export default async function UpdatePassword({
   }
 
   return (
-    <div>UpdatePassword</div>
+    <main className='flex justify-center items-center min-h-screen'>
+      <Card>
+        <CardHeader>
+          <CardTitle>
+            
+          </CardTitle>
+        </CardHeader>
+      </Card>
+    </main>
   )
 }
