@@ -1,7 +1,8 @@
-import { Card, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import db from '@/db/drizzle'
 import { passwordResetTokens } from '@/db/passwordResetTokensSchema'
 import { eq } from 'drizzle-orm'
+import Link from 'next/link'
 
 export default async function UpdatePassword({
   searchParams
@@ -45,6 +46,23 @@ export default async function UpdatePassword({
             }
           </CardTitle>
         </CardHeader>
+        <CardContent>
+          {
+            tokenIsValid 
+              ? 
+                <div>
+                  Update Password Form
+                </div> 
+              : 
+                <Link 
+                  href='/password-reset'
+                  className='uppercase'
+                >
+                  
+                  Request another password reset link
+                </Link>
+          }
+        </CardContent>
       </Card>
     </main>
   )
