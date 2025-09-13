@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { useToast } from '@/hooks/use-toast'
 import { updatePassword } from './actions'
+import Link from 'next/link'
 
 const formSchema = passwordMatchSchema
 
@@ -55,7 +56,13 @@ export default function UpdatePasswordForm({token}: Props) {
   return (
     form.formState.isSubmitSuccessful ? (
       <div>
-        Form successful
+        <span>Your password has been updated. </span>
+        <Link 
+          href='/login'
+          className='uppercase'
+        >
+          Login
+        </Link>
       </div>
     ) : (  
       <Form {...form}>
