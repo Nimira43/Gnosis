@@ -15,7 +15,8 @@ export const updatePassword = async ({
   
   if(session?.user?.id) {
     return {
-      error: true
+      error: true,
+      message: 'You are already logged in. Please logout to reset your password.'
     }
   }
   
