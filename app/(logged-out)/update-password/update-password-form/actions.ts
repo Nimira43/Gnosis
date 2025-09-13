@@ -15,7 +15,17 @@ export const updatePassword = async ({
   password: string
   passwordConfirm: string
 }) => {
-  const passwordValidation = passwordMatchSchema
+  const passwordValidation = passwordMatchSchema.safeParse({
+    password,
+    passwordConfirm
+  })
+
+  if (!passwordValidation.success) {
+    return {
+      error: true,
+      message: passwordValidation.error.issues[0]?.message ?? 'An error occurred.',
+    }
+  }
 
   const session = await auth()
   
