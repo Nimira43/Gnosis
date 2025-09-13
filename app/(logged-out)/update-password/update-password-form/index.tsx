@@ -15,13 +15,12 @@ const formSchema = z.object({
   currentPassword: passwordSchema
 }).and(passwordMatchSchema)
 
-export default function ChangePasswordForm() {
+export default function UpdatePasswordForm() {
   const {toast} = useToast()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      currentPassword: '',
       password: '',
       passwordConfirm: ''
     },
@@ -55,21 +54,6 @@ export default function ChangePasswordForm() {
           disabled={form.formState.isSubmitting}
           className='flex flex-col gap-2'
         >
-          <FormField
-            control={form.control}
-            name='currentPassword'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>
-                  Current Password
-                </FormLabel>
-                <FormControl>
-                  <Input {...field} type='password' />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
           <FormField
             control={form.control}
             name='password'
