@@ -1,6 +1,9 @@
 'use server'
 
 import { auth } from '@/auth'
+import db from '@/db/drizzle'
+import { passwordResetTokens } from '@/db/passwordResetTokensSchema'
+import { eq } from 'drizzle-orm'
 
 export const updatePassword = async ({
   token,
@@ -19,6 +22,8 @@ export const updatePassword = async ({
       message: 'You are already logged in. Please logout to reset your password.'
     }
   }
+
+  let tokenIsValid = false
 
   if (token) {
     const [passwordResetToken] = await db
