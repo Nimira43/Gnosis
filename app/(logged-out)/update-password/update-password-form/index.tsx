@@ -4,18 +4,19 @@ import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { passwordMatchSchema } from '@/validation/passwordMatchSchema'
-import { passwordSchema } from '@/validation/passwordSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { useToast } from '@/hooks/use-toast'
 import { updatePassword } from './actions'
 
-const formSchema = z.object({
-  currentPassword: passwordSchema
-}).and(passwordMatchSchema)
+const formSchema = passwordMatchSchema
 
-export default function UpdatePasswordForm() {
+type Props = {
+  token: string
+}
+
+export default function UpdatePasswordForm({token}: Props) {
   const {toast} = useToast()
 
   const form = useForm<z.infer<typeof formSchema>>({
