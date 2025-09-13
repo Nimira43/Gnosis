@@ -44,5 +44,13 @@ export const updatePassword = async ({
       tokenIsValid = true
     }
   }
+
+  if (!tokenIsValid) {
+    return {
+      error: true,
+      message: 'Your token is invalid or expired.',
+      tokenInvalid: true,
+    }
+  }
   
 }
