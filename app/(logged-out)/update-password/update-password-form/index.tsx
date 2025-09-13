@@ -53,55 +53,61 @@ export default function UpdatePasswordForm({token}: Props) {
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleSubmit)}>
-        <fieldset
-          disabled={form.formState.isSubmitting}
-          className='flex flex-col gap-2'
-        >
-          <FormField
-            control={form.control}
-            name='password'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>
-                  New Password
-                </FormLabel>
-                <FormControl>
-                  <Input {...field} type='password' />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name='passwordConfirm'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>
-                  Confirm New Password
-                </FormLabel>
-                <FormControl>
-                  <Input {...field} type='password' />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          {!!form.formState.errors.root?.message &&
-            <FormMessage>
-              {form.formState.errors.root?.message}
-            </FormMessage>
-          }
-          <Button
-            className='uppercase'
-            type='submit'
+    form.formState.isSubmitSuccessful ? (
+      <div>
+        Form successful
+      </div>
+    ) : (  
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(handleSubmit)}>
+          <fieldset
+            disabled={form.formState.isSubmitting}
+            className='flex flex-col gap-2'
           >
-            Submit
-          </Button>
-        </fieldset>
-      </form>
-    </Form>
+            <FormField
+              control={form.control}
+              name='password'
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>
+                    New Password
+                  </FormLabel>
+                  <FormControl>
+                    <Input {...field} type='password' />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name='passwordConfirm'
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>
+                    Confirm New Password
+                  </FormLabel>
+                  <FormControl>
+                    <Input {...field} type='password' />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            {!!form.formState.errors.root?.message &&
+              <FormMessage>
+                {form.formState.errors.root?.message}
+              </FormMessage>
+            }
+            <Button
+              className='uppercase'
+              type='submit'
+            >
+              Submit
+            </Button>
+          </fieldset>
+        </form>
+      </Form>
+    )
   )
 }
