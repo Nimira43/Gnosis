@@ -56,7 +56,7 @@ export default async function UpdatePassword({
               : 
                 <Link 
                   href='/password-reset'
-                  className='uppercase'
+                  className='italic'
                 >
                   
                   Request another password reset link
