@@ -58,18 +58,26 @@ export const updatePassword = async ({
     ) {
       tokenIsValid = true
     }
-  }
-
-  if (!tokenIsValid) {
-    return {
-      error: true,
-      message: 'Your token is invalid or expired.',
-      tokenInvalid: true,
+  
+    if (!tokenIsValid) {
+      return {
+        error: true,
+        message: 'Your token is invalid or expired.',
+        tokenInvalid: true,
+      }
     }
-  } 
 
-  const hashedPassword = await hash(password, 10)
-  await db.update(users).set({
-    password: hashedPassword
-  })
+    const hashedPassword = await hash(password, 10)
+    await db
+      .update(users)
+      .set({
+        password: hashedPassword
+      })
+      .where(
+        eq(
+          users.id,
+          passwordResetToken.userId!
+        )
+      )
+  }
 }
