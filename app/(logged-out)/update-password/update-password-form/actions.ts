@@ -79,5 +79,13 @@ export const updatePassword = async ({
           passwordResetToken.userId!
         )
       )
+      await db
+        .delete(passwordResetTokens)
+        .where(
+          eq(
+            passwordResetTokens.id,
+            passwordResetToken.id
+          )
+        )
   }
 }
