@@ -8,4 +8,9 @@ export const updatePassword = async ({
   token: string
   password: string
   passwordConfirm: string
-}) => {}
+}) => {
+  return {
+    error: true,
+    message: ''
+  }
+}

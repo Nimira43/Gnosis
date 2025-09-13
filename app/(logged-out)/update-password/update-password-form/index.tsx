@@ -29,7 +29,7 @@ export default function UpdatePasswordForm({token}: Props) {
 
   const handleSubmit = async (data: z.infer<typeof formSchema>) => {
     const response = await updatePassword({
-      token: data.currentPassword,
+      token,
       password: data.password,
       passwordConfirm: data.passwordConfirm
     })
