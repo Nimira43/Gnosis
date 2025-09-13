@@ -1,5 +1,7 @@
 'use server'
 
+import { auth } from '@/auth'
+
 export const updatePassword = async ({
   token,
   password,
@@ -9,8 +11,12 @@ export const updatePassword = async ({
   password: string
   passwordConfirm: string
 }) => {
-  return {
-    error: true,
-    message: ''
+  const session = await auth()
+  
+  if(session?.user?.id) {
+    return {
+      error: true
+    }
   }
+  
 }
