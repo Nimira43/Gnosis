@@ -19,5 +19,25 @@ export const updatePassword = async ({
       message: 'You are already logged in. Please logout to reset your password.'
     }
   }
+
+  if (token) {
+    const [passwordResetToken] = await db
+      .select()
+      .from(passwordResetTokens)
+      .where(
+        eq(
+          passwordResetTokens
+            .token, token
+        )
+      )
+    const now = Date.now()
+
+    if (
+      !!passwordResetToken?.tokenExpiry && 
+      now < passwordResetToken.tokenExpiry.getTime()
+    ) {
+      tokenIsValid = true
+    }
+  }
   
 }
