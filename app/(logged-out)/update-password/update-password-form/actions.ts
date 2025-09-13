@@ -3,6 +3,7 @@
 import { auth } from '@/auth'
 import db from '@/db/drizzle'
 import { passwordResetTokens } from '@/db/passwordResetTokensSchema'
+import { passwordMatchSchema } from '@/validation/passwordMatchSchema'
 import { eq } from 'drizzle-orm'
 
 export const updatePassword = async ({
@@ -14,6 +15,8 @@ export const updatePassword = async ({
   password: string
   passwordConfirm: string
 }) => {
+  const passwordValidation = passwordMatchSchema
+
   const session = await auth()
   
   if(session?.user?.id) {
