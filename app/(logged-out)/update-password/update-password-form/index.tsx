@@ -34,6 +34,10 @@ export default function UpdatePasswordForm({token}: Props) {
       passwordConfirm: data.passwordConfirm
     })
 
+    if (response?.tokenInvalid) {
+      window.location.reload()
+    }
+
     if (response?.error) {
       form.setError('root', {
         message: response.message

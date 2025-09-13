@@ -51,6 +51,5 @@ export const updatePassword = async ({
       message: 'Your token is invalid or expired.',
       tokenInvalid: true,
     }
-  }
-  
+  } 
 }
