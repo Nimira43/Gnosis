@@ -52,7 +52,7 @@ export default function Login() {
             Login
           </CardTitle>
           <CardDescription>
-            Login to your new account.
+            Login to your account.
           </CardDescription>
         </CardHeader>
         <CardContent>

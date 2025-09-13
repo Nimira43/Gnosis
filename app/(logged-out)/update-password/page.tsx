@@ -37,13 +37,13 @@ export default async function UpdatePassword({
 
   return (
     <main className='flex justify-center items-center min-h-screen'>
-      <Card className='w-[350px] text-center'>
+      <Card className='w-[350px]'>
         <CardHeader>
-          <CardTitle>
+          <CardTitle className='uppercase text-medium'>
             {
               tokenIsValid
                 ? 'Update password'
-                : 'Your password reset link is invalid or has expired.'
+                : 'Invalid / Expired Link.'
             }
           </CardTitle>
         </CardHeader>
@@ -57,13 +57,15 @@ export default async function UpdatePassword({
                   />
                 </div> 
               : 
-                <Link 
-                  href='/password-reset'
-                  className='italic'
-                >
-                  
-                  Request another password reset link
-                </Link>
+                <>
+                  <span>You have provided an invalid or expired password reset link. </span>
+                  <Link 
+                    href='/password-reset'
+                    className='uppercase'
+                  >  
+                    Request new link.
+                  </Link>
+                </>                
           }
         </CardContent>
       </Card>
