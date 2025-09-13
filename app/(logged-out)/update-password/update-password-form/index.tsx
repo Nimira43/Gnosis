@@ -8,8 +8,8 @@ import { passwordSchema } from '@/validation/passwordSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { changePassword } from './actions'
 import { useToast } from '@/hooks/use-toast'
+import { updatePassword } from './actions'
 
 const formSchema = z.object({
   currentPassword: passwordSchema
@@ -27,8 +27,8 @@ export default function UpdatePasswordForm() {
   })
 
   const handleSubmit = async (data: z.infer<typeof formSchema>) => {
-    const response = await changePassword({
-      currentPassword: data.currentPassword,
+    const response = await updatePassword({
+      token: data.currentPassword,
       password: data.password,
       passwordConfirm: data.passwordConfirm
     })
