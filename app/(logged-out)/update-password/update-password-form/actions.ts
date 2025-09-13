@@ -3,7 +3,9 @@
 import { auth } from '@/auth'
 import db from '@/db/drizzle'
 import { passwordResetTokens } from '@/db/passwordResetTokensSchema'
+import { users } from '@/db/usersSchema'
 import { passwordMatchSchema } from '@/validation/passwordMatchSchema'
+import { hash } from 'bcryptjs'
 import { eq } from 'drizzle-orm'
 
 export const updatePassword = async ({
@@ -65,4 +67,9 @@ export const updatePassword = async ({
       tokenInvalid: true,
     }
   } 
+
+  const hashedPassword = await hash(password, 10)
+  await db.update(users).set({
+    password: hashedPassword
+  })
 }
