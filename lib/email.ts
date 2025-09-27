@@ -1,1 +1,5 @@
-import nodemailer from 'nodemailer'
+import nodemailer, { createTransport } from 'nodemailer'
+
+export const mailer = createTransport({
+  
+})
