@@ -45,5 +45,9 @@ export const passwordReset = async (emailAddress: string) => {
           tokenExpiry,
         }
       })
+
+    const resetLink = `${process.env.SITE_BASE_URL}/update-password?token=${passwordResetToken}`
+
+    
     console.log({passwordResetToken})
 }
