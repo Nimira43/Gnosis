@@ -4,6 +4,7 @@ import { auth } from '@/auth'
 import db from '@/db/drizzle'
 import { passwordResetTokens } from '@/db/passwordResetTokensSchema'
 import { users } from '@/db/usersSchema'
+import { mailer } from '@/lib/email'
 import { randomBytes } from 'crypto'
 import { eq } from 'drizzle-orm'
 
@@ -48,6 +49,11 @@ export const passwordReset = async (emailAddress: string) => {
 
     const resetLink = `${process.env.SITE_BASE_URL}/update-password?token=${passwordResetToken}`
 
-    
+    await mailer.sendMail({
+      from: "test@resend.dev",
+      subject: "Your password reset request.",
+      to: emailAddress,
+      text: `You have requested to reset your password for ${emailAddress}. Your password reset link is <a href="${resetLink}">${resetLink}</a>. This link will expire in 1 hour.`,
+    })
     console.log({passwordResetToken})
 }
