@@ -11,6 +11,9 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
   const [isActivated, setIsActivated] = useState(twoFactorActivated)
   const [step, setStep] = useState(1)
 
+  const handleEnableClick = () => {
+    setStep(2)
+  }
 
   return (
     <div>
@@ -22,6 +25,9 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
             >
               Enable Two-Factor Authentication
             </Button>
+          }
+          {step === 2 &&
+            <div>Display QR Code</div>
           }
         </div>
       }
