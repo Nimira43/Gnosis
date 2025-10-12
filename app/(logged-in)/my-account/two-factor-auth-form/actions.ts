@@ -18,4 +18,11 @@ export const get2faSecret = async () => {
   const [user] = await db.select({
     twoFactorSecret: users.twoFactorSecret,
   }).from(users).where(eq(users.id, parseInt(session.user.id)))
+
+  if(!user) {
+    return (
+      error: true,
+      message: 'User not found.'
+    )
+  }
 }
