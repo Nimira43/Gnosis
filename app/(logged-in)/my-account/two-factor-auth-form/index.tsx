@@ -7,9 +7,17 @@ type Props = {
 }
 
 export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
-  const [isActivated, setIsActivated] = useState
+  const [isActivated, setIsActivated] = useState(twoFactorActivated)
+  const [step, setStep] = useState(1)
+
 
   return (
-    <div>2FA Form</div>
+    <div>
+      {!isActivated &&
+        <div>
+
+        </div>
+      }
+    </div>
   )
 }
