@@ -4,6 +4,7 @@ import { auth } from "@/auth"
 import db from "@/db/drizzle"
 import { users } from "@/db/usersSchema"
 import { eq } from "drizzle-orm"
+import { authenticator } from 'otplib'
 
 export const get2faSecret = async () => {
   const session = await auth()
@@ -20,9 +21,13 @@ export const get2faSecret = async () => {
   }).from(users).where(eq(users.id, parseInt(session.user.id)))
 
   if(!user) {
-    return (
+    return {
       error: true,
       message: 'User not found.'
-    )
+    }
+  }
+
+  if (!user.twoFactorSecret) {
+    const twoFactorSecret = authenticator.generateSecret()
   }
 }
