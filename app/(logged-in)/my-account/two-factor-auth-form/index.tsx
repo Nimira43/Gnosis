@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { useState } from 'react'
 import { get2faSecret } from './actions'
 import { useToast } from '@/hooks/use-toast'
+import QRCode from 'qrcode.react'
 
 type Props = {
   twoFactorActivated: boolean
@@ -41,7 +42,12 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
             </Button>
           }
           {step === 2 &&
-            <div>Display QR Code</div>
+            <div>
+              <p className='text-xs text-muted-foreground py-2'>
+                Scan the QR code below using the Google Authenticator app to activate Two-Factor Authentication.
+              </p>
+              <QRCode value={code} />
+            </div>
           }
         </div>
       }
