@@ -1,5 +1,6 @@
 'use client'
 
+import { Button } from '@/components/ui/button'
 import { useState } from 'react'
 
 type Props = {
@@ -15,7 +16,13 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
     <div>
       {!isActivated &&
         <div>
-
+          {step === 1 &&
+            <Button
+              onClick={handleEnableClick}
+            >
+              Enable Two-Factor Authentication
+            </Button>
+          }
         </div>
       }
     </div>
