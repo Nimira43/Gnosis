@@ -4,14 +4,16 @@ import { Label } from '@/components/ui/label'
 import TwoFactorAuthForm from './two-factor-auth-form'
 import db from '@/db/drizzle'
 import { users } from '@/db/usersSchema'
+import { eq } from 'drizzle-orm'
 
 export default async function MyAccount() {
   const session = await auth()
-  const [user] = await db.select({
-    twoFactorAuthActivated: users.twoFactorActivated
-  })
-
-  users.twoFactorActivated
+  const [user] = await db
+    .select({
+      twoFactorActivated: users.twoFactorActivated
+    })
+    .from(users)
+    .where(eq(users.id, parseInt(session?.user?.id!)))
   
   return (
     <Card className='bg-light-extra w-[350px]'>
