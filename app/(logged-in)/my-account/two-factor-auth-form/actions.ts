@@ -27,10 +27,20 @@ export const get2faSecret = async () => {
     }
   }
 
+  let twoFactorSecret = user.twoFactorSecret
+
   if (!user.twoFactorSecret) {
-    const twoFactorSecret = authenticator.generateSecret()
+    twoFactorSecret = authenticator.generateSecret()
     await db.update(users).set({
       twoFactorSecret
     }).where(eq(users.id, parseInt(session.user.id)))
+  }
+
+  return {
+    twoFactorSecret: authenticator.keyuri(
+      session.user.email, 
+      'Gnosis', 
+      twoFactorSecret
+    )
   }
 }
