@@ -29,7 +29,9 @@ export default async function MyAccount() {
         <div className='font-normal text-sm'>
           {session?.user?.email}
         </div>
-        <TwoFactorAuthForm />
+        <TwoFactorAuthForm 
+          twoFactorActivated={user.twoFactorActivated ?? false}
+        />
       </CardContent>
     </Card>
   )
