@@ -38,9 +38,9 @@ export const get2faSecret = async () => {
 
   return {
     twoFactorSecret: authenticator.keyuri(
-      session.user.email, 
+      session.user.email ?? '', 
       'Gnosis', 
-      twoFactorSecret
+      twoFactorSecret!
     )
   }
 }
