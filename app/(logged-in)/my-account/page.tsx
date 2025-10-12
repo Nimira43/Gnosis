@@ -1,6 +1,7 @@
 import { auth } from '@/auth'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
+import TwoFactorAuthForm from './two-factor-auth-form'
 
 export default async function MyAccount() {
   const session = await auth()
@@ -19,6 +20,7 @@ export default async function MyAccount() {
         <div className='font-normal text-sm'>
           {session?.user?.email}
         </div>
+        <TwoFactorAuthForm />
       </CardContent>
     </Card>
   )
