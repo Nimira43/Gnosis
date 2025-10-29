@@ -31,6 +31,10 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
     setCode(response.twoFactorSecret ?? '')
   }
 
+  const handleOTPSubmit = async () => {
+    
+  }
+
   return (
     <div>
       {!isActivated &&
@@ -65,7 +69,10 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
             </div>
           )}
           {step === 3 && (
-            <form>
+            <form 
+              className='flex flex-col gap-2'
+              onSubmit={handleOTPSubmit}
+            >
               <p className='text-xs text-muted-foreground'>
                 Please enter the one-time password from Google Authenticator...
               </p>
