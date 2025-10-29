@@ -36,6 +36,7 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
         <div>
           {step === 1 &&
             <Button
+              className='w-full my-2'
               onClick={handleEnableClick}
             >
               Enable Two-Factor Authentication
@@ -47,8 +48,19 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
                 Scan the QR code below using the Google Authenticator app to activate Two-Factor Authentication.
               </p>
               <QRCodeSVG value={code} />
-              <Button>I have scanned the QR Code</Button>
-              <Button>Cancel</Button>
+              <Button
+                className='w-full my-2'
+                onClick={() => setStep(3)}
+              >
+                I have scanned the QR Code
+              </Button>
+              <Button
+                className='w-full my-2'
+                onClick={() => setStep(1)}
+                variant='outline'
+              >
+                Cancel
+              </Button>
             </div>
           }
         </div>
