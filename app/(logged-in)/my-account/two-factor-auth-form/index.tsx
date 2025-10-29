@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { get2faSecret } from './actions'
 import { useToast } from '@/hooks/use-toast'
 import { QRCodeSVG } from 'qrcode.react'
-import { InputOTP, InputOTPGroup, InputOTPSeparator } from '@/components/ui/input-otp'
+import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from '@/components/ui/input-otp'
 
 type Props = {
   twoFactorActivated: boolean
@@ -71,9 +71,15 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
               </p>
               <InputOTP maxLength={6}>
                 <InputOTPGroup>
+                  <InputOTPSlot index={0} />
+                  <InputOTPSlot index={1} />
+                  <InputOTPSlot index={2} />
                 </InputOTPGroup>
                 <InputOTPSeparator />
                 <InputOTPGroup>
+                  <InputOTPSlot index={3} />
+                  <InputOTPSlot index={4} />
+                  <InputOTPSlot index={5} />          
                 </InputOTPGroup>
               </InputOTP>
             </form>
