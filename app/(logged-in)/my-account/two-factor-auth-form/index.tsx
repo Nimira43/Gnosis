@@ -31,8 +31,9 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
     setCode(response.twoFactorSecret ?? '')
   }
 
-  const handleOTPSubmit = async () => {
-    
+  const handleOTPSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
   }
 
   return (
