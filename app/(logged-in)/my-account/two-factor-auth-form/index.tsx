@@ -90,6 +90,12 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
                   <InputOTPSlot index={5} />          
                 </InputOTPGroup>
               </InputOTP>
+              <Button type='submit'>
+                Submit and Activate
+              </Button>
+              <Button variant='outline'>
+                Cancel
+              </Button>
             </form>
           )}
         </div>
