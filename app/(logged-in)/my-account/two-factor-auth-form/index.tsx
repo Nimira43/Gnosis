@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { get2faSecret } from './actions'
 import { useToast } from '@/hooks/use-toast'
 import { QRCodeSVG } from 'qrcode.react'
+import { InputOTP, InputOTPGroup, InputOTPSeparator } from '@/components/ui/input-otp'
 
 type Props = {
   twoFactorActivated: boolean
@@ -68,6 +69,13 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
               <p className='text-xs text-muted-foreground'>
                 Please enter the one-time password from Google Authenticator...
               </p>
+              <InputOTP maxLength={6}>
+                <InputOTPGroup>
+                </InputOTPGroup>
+                <InputOTPSeparator />
+                <InputOTPGroup>
+                </InputOTPGroup>
+              </InputOTP>
             </form>
           )}
         </div>
