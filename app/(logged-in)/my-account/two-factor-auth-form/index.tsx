@@ -42,7 +42,7 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
               Enable Two-Factor Authentication
             </Button>
           }
-          {step === 2 &&
+          {step === 2 && (
             <div>
               <p className='text-xs text-muted-foreground py-2'>
                 Scan the QR code below using the Google Authenticator app to activate Two-Factor Authentication.
@@ -62,7 +62,14 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
                 Cancel
               </Button>
             </div>
-          }
+          )}
+          {step === 3 && (
+            <form>
+              <p className='text-xs text-muted-foreground'>
+                Please enter the one-time password from Google Authenticator...
+              </p>
+            </form>
+          )}
         </div>
       }
     </div>
