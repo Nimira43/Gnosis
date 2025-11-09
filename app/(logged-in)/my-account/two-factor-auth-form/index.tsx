@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button'
 import { useState } from 'react'
-import { get2faSecret } from './actions'
+import { activate2fa, get2faSecret } from './actions'
 import { useToast } from '@/hooks/use-toast'
 import { QRCodeSVG } from 'qrcode.react'
 import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from '@/components/ui/input-otp'
@@ -34,7 +34,7 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
 
   const handleOTPSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-
+    const response = await activate2fa(otp)
   }
 
   return (
