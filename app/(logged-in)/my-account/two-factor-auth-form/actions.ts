@@ -66,5 +66,7 @@ export const activate2fa = async (token: string) => {
     }
   }
 
-  if (user.twoFactorSecret) {}
+  if (user.twoFactorSecret) {
+    const tokenValid = authenticator.check(token, user.twoFactorSecret)
+  }
 }
