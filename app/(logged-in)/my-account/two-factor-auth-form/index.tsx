@@ -57,8 +57,9 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
       className: 'bg-green-500 text-light',
       title: 'Two-Factor Authentication has been disabled'
     })
-  }
 
+    setIsActivated(false)
+  }
 
   return (
     <div>
