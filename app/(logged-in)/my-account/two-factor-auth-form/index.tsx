@@ -51,7 +51,9 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
     setIsActivated(true)
   }
 
-  
+  const handleDisable2faClick = async () => {
+    
+  }
 
 
   return (
