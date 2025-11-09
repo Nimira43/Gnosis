@@ -35,6 +35,13 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
   const handleOTPSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const response = await activate2fa(otp)
+
+    if (response?.error) {
+      toast({
+        variant: 'destructive',
+        title: response.message
+      })
+    }
   }
 
   return (
