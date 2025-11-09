@@ -57,7 +57,9 @@ export const activate2fa = async (token: string) => {
 
   const [user] = await db.select({
     twoFactorSecret: users.twoFactorSecret,
-  }).from(users).where(eq(users.id, parseInt(session.user.id)))
+  })
+    .from(users)
+    .where(eq(users.id, parseInt(session.user.id)))
 
   if(!user) {
     return {
@@ -68,5 +70,12 @@ export const activate2fa = async (token: string) => {
 
   if (user.twoFactorSecret) {
     const tokenValid = authenticator.check(token, user.twoFactorSecret)
+
+    if (!tokenValid) {
+      return {
+        error: true,
+        message: 'Invalid OTP.'
+      }
+    }
   }
 }
