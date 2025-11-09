@@ -53,6 +53,13 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
 
   return (
     <div>
+      {!!isActivated && 
+        <Button 
+          className='uppercase'
+        >
+          Disable 2FA
+        </Button>
+      }
       {!isActivated &&
         <div>
           {step === 1 &&
