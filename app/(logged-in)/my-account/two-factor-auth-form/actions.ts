@@ -86,3 +86,14 @@ export const activate2fa = async (token: string) => {
       .where(eq(users.id, parseInt(session.user.id)))
   }
 }
+
+export const disable2fa = async () => {
+  const session = await auth()
+
+  if (!session?.user?.id) {
+    return {
+      error: 'true',
+      message: 'Unauthorised'
+    }
+  }
+}
