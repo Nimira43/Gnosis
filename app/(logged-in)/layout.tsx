@@ -15,12 +15,12 @@ export default async function LoggedInLayout({
   }
   return (
     <div className='min-h-screen flex flex-col'>
-      <nav className='bg-main-light flex justify-between p-4 items-center'>
+      <nav className='bg-grey-light flex justify-between p-4 items-center'>
         <ul className='flex gap-4'>
           <li>
             <Link 
               href='/my-account' 
-              className='uppercase font-medium hover:text-main-dark btn-hover'
+              className='uppercase font-medium hover:text-main btn-hover'
             >
             My Account
             </Link>
@@ -28,7 +28,7 @@ export default async function LoggedInLayout({
           <li>
             <Link 
               href='/change-password'
-              className='uppercase font-medium hover:text-main-dark btn-hover' 
+              className='uppercase font-medium hover:text-main btn-hover' 
             >
               Change Password
             </Link>

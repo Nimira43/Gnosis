@@ -40,7 +40,7 @@ export default function PasswordReset() {
           </CardContent>
         </Card>
       ) : (
-        <Card className='w-[350px]'>
+        <Card className='bg-grey-light w-[350px]'>
           <CardHeader>
             <CardTitle className='uppercase'>
               Password Reset

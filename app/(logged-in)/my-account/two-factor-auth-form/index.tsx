@@ -93,7 +93,10 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
               <Button type='submit'>
                 Submit and Activate
               </Button>
-              <Button variant='outline'>
+              <Button 
+                onClick={() => setStep(2)}
+                variant='outline'
+              >
                 Cancel
               </Button>
             </form>

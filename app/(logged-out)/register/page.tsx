@@ -49,7 +49,7 @@ export default function Register() {
   return (
     <main className='flex justify-center items-center min-h-screen'>
       {form.formState.isSubmitSuccessful ? (
-        <Card className='w-[350px] bg-light-extra'>
+        <Card className='w-[350px] bg-grey-light'>
           <CardHeader>
             <CardTitle>Your account has been created.</CardTitle>
           </CardHeader>
@@ -62,7 +62,7 @@ export default function Register() {
           </CardContent>
         </Card>        
       ) : ( 
-        <Card className='w-[350px] bg-light-extra'>
+        <Card className='w-[350px] bg-grey-light'>
           <CardHeader>
             <CardTitle className='uppercase'>
               Register

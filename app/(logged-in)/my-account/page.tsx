@@ -16,7 +16,7 @@ export default async function MyAccount() {
     .where(eq(users.id, parseInt(session?.user?.id!)))
   
   return (
-    <Card className='bg-light-extra w-[350px]'>
+    <Card className='bg-grey-light w-[350px]'>
       <CardHeader>
         <CardTitle 
           className='font-medium uppercase text-center'
