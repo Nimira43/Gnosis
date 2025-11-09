@@ -16,6 +16,7 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
   const [isActivated, setIsActivated] = useState(twoFactorActivated)
   const [step, setStep] = useState(1)
   const [code, setCode] = useState('')
+  const [otp, setOtp] = useState('')
 
   const handleEnableClick = async () => {
     const response = await get2faSecret()
