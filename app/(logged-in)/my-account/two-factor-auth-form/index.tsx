@@ -78,7 +78,11 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
               <p className='text-xs text-muted-foreground'>
                 Please enter the one-time password from Google Authenticator...
               </p>
-              <InputOTP maxLength={6}>
+              <InputOTP 
+                maxLength={6}
+                value={otp}
+                onChange={setOtp}
+              >
                 <InputOTPGroup>
                   <InputOTPSlot index={0} />
                   <InputOTPSlot index={1} />
