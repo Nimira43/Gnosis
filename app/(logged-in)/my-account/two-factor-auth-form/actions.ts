@@ -96,4 +96,11 @@ export const disable2fa = async () => {
       message: 'Unauthorised'
     }
   }
+
+  await db
+    .update(users)
+    .set({
+      twoFactorActivated: false
+    })
+    .where(eq(users.id, parseInt(session.user.id)))
 }
