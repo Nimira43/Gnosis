@@ -47,7 +47,6 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
       className: 'bg-green-500 text-light',
       title: 'Two-Factor Authentication has been enabled',
     })
-
     setIsActivated(true)
   }
 
@@ -57,7 +56,6 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
       className: 'bg-green-500 text-light',
       title: 'Two-Factor Authentication has been disabled'
     })
-
     setIsActivated(false)
   }
 
@@ -65,7 +63,7 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
     <div>
       {!!isActivated && 
         <Button 
-          className='uppercase'
+          className='uppercase w-full my-4'
           onClick={handleDisable2faClick}
         >
           Disable 2FA
@@ -75,7 +73,7 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
         <div>
           {step === 1 &&
             <Button
-              className='w-full my-2'
+              className='uppercase w-full my-4'
               onClick={handleEnableClick}
             >
               Enable Two-Factor Authentication
@@ -128,12 +126,14 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
                 </InputOTPGroup>
               </InputOTP>
               <Button 
+                className='uppercase'
                 disabled={otp.length !== 6}
                 type='submit'
               >
                 Submit and Activate
               </Button>
               <Button 
+                className='uppercase' 
                 onClick={() => setStep(2)}
                 variant='outline'
               >
