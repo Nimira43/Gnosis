@@ -45,7 +45,7 @@ export const get2faSecret = async () => {
   }
 }
 
-export const activate2fa = async () => {
+export const activate2fa = async (token: string) => {
   const session = await auth()
 
   if (!session?.user?.id) {
