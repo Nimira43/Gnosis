@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button'
 import { useState } from 'react'
-import { activate2fa, get2faSecret } from './actions'
+import { activate2fa, disable2fa, get2faSecret } from './actions'
 import { useToast } from '@/hooks/use-toast'
 import { QRCodeSVG } from 'qrcode.react'
 import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from '@/components/ui/input-otp'
@@ -52,7 +52,11 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
   }
 
   const handleDisable2faClick = async () => {
-    
+    await disable2fa()
+    toast({
+      className: 'bg-green-500 text-light',
+      title: 'Two-Factor Authentication has been disabled'
+    })
   }
 
 
