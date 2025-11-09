@@ -65,4 +65,6 @@ export const activate2fa = async (token: string) => {
       message: 'User not found.'
     }
   }
+
+  if (user.twoFactorSecret) {}
 }
