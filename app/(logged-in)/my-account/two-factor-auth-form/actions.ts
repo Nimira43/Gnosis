@@ -54,4 +54,15 @@ export const activate2fa = async (token: string) => {
       message: 'Unauthorised'
     }
   }
+
+  const [user] = await db.select({
+    twoFactorSecret: users.twoFactorSecret,
+  }).from(users).where(eq(users.id, parseInt(session.user.id)))
+
+  if(!user) {
+    return {
+      error: true,
+      message: 'User not found.'
+    }
+  }
 }
