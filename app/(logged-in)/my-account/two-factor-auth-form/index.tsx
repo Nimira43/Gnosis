@@ -51,11 +51,15 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
     setIsActivated(true)
   }
 
+  
+
+
   return (
     <div>
       {!!isActivated && 
         <Button 
           className='uppercase'
+          onClick={handleDisable2faClick}
         >
           Disable 2FA
         </Button>
