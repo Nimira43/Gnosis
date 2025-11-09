@@ -95,7 +95,10 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
                   <InputOTPSlot index={5} />          
                 </InputOTPGroup>
               </InputOTP>
-              <Button type='submit'>
+              <Button 
+                disabled={otp.length !== 6}
+                type='submit'
+              >
                 Submit and Activate
               </Button>
               <Button 
