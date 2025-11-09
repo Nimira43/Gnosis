@@ -44,3 +44,5 @@ export const get2faSecret = async () => {
     )
   }
 }
+
+export const activate2fa = async () => {}
