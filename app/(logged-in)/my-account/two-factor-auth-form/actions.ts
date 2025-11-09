@@ -45,4 +45,13 @@ export const get2faSecret = async () => {
   }
 }
 
-export const activate2fa = async () => {}
+export const activate2fa = async () => {
+  const session = await auth()
+
+  if (!session?.user?.id) {
+    return {
+      error: 'true',
+      message: 'Unauthorised'
+    }
+  }
+}
