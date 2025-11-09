@@ -41,7 +41,12 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
         variant: 'destructive',
         title: response.message
       })
+      return
     }
+    toast({
+      className: 'bg-green-500 text-light',
+      title: 'Two-Factor Authentication has been enabled',
+    })
   }
 
   return (
