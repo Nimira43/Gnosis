@@ -77,5 +77,12 @@ export const activate2fa = async (token: string) => {
         message: 'Invalid OTP.'
       }
     }
+
+    await db
+      .update(users)
+      .set({
+        twoFactorActivated: true
+      })
+      .where(eq(users.id, parseInt(session.user.id)))
   }
 }
