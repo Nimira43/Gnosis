@@ -28,7 +28,10 @@ export default function Login() {
   })
 
   const handleSubmit = async (data: z.infer<typeof formSchema>) => {
-    const preLoginCheckResponse = await preLoginCheck()
+    const preLoginCheckResponse = await preLoginCheck({
+      email: data.email,
+      password: data.password
+    })
 
 
     const response = await loginWithCredentials({
