@@ -11,6 +11,7 @@ import { z } from 'zod'
 import { loginWithCredentials, preLoginCheck } from './actions'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { useState } from 'react'
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -18,6 +19,7 @@ const formSchema = z.object({
 })
 
 export default function Login() {
+  const [step, setStep] = useState(1)
   const router = useRouter()
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
