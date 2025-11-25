@@ -13,6 +13,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useState } from 'react'
 import { InputOTPGroup, InputOTPSlot, InputOTPSeparator, InputOTP } from '@/components/ui/input-otp'
+import { useToast } from '@/hooks/use-toast'
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -20,6 +21,7 @@ const formSchema = z.object({
 })
 
 export default function Login() {
+  const { toast } = useToast()
   const [step, setStep] = useState(1)
   const [otp, setOtp] = useState('')
   const router = useRouter()
@@ -73,8 +75,9 @@ export default function Login() {
     })
 
     if (response?.error) {
-      form.setError('root', {
-        message: response.message,
+      toast({
+        title: response.message,
+        variant: 'destructive'
       })
     } else {
       router.push('/my-account')
