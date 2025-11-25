@@ -75,4 +75,8 @@ export const preLoginCheck = async ({
       }
     }
   }
+
+  return {
+    twoFactorActivated: user.twoFactorActivated
+  }
 }
