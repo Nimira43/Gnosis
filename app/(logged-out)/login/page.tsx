@@ -43,21 +43,19 @@ export default function Login() {
     if (preLoginCheckResponse.twoFactorActivated) {
 
     } else {
-      
-    }
-
-    const response = await loginWithCredentials({
-      email: data.email,
-      password: data.password
-    })
-  
-    if (response?.error) {
-      form.setError('root', {
-        message: response.message,
+      const response = await loginWithCredentials({
+        email: data.email,
+        password: data.password
       })
-    } else {
-      router.push('/my-account')
-    }
+    
+      if (response?.error) {
+        form.setError('root', {
+          message: response.message,
+        })
+      } else {
+        router.push('/my-account')
+      }
+    }    
   }
 
   const email = form.getValues('email')
