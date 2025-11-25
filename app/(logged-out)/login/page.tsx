@@ -12,6 +12,7 @@ import { loginWithCredentials, preLoginCheck } from './actions'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useState } from 'react'
+import { InputOTPGroup, InputOTPSlot, InputOTPSeparator, InputOTP } from '@/components/ui/input-otp'
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -20,6 +21,7 @@ const formSchema = z.object({
 
 export default function Login() {
   const [step, setStep] = useState(1)
+  const [otp, setOtp] = useState('')
   const router = useRouter()
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -158,63 +160,32 @@ export default function Login() {
         <Card className='w-[350px] bg-grey-light'>
           <CardHeader>
             <CardTitle className='uppercase'>
-              Login
+              One-Time Passcode
             </CardTitle>
             <CardDescription>
-              Login to your account.
+              Enter the OTP from your Authenticator app.
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(handleSubmit)}>
-                <fieldset
-                  disabled={form.formState.isSubmitting}
-                  className='flex flex-col gap-2'
-                >
-                  <FormField
-                    control={form.control}
-                    name='email'
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>
-                          Email
-                        </FormLabel>
-                        <FormControl>
-                          <Input {...field} type='email' />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name='password'
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>
-                          Password
-                        </FormLabel>
-                        <FormControl>
-                          <Input {...field} type='password' />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  {!!form.formState.errors.root?.message && (
-                    <FormMessage>
-                      {form.formState.errors.root.message}
-                    </FormMessage>
-                  )}
-                  <Button 
-                    className='uppercase'
-                    type='submit'
-                  >
-                    Login
-                  </Button>
-                </fieldset>
-              </form>
-            </Form>
+            <form>
+              <InputOTP 
+                maxLength={6}
+                value={otp}
+                onChange={setOtp}
+              >
+                <InputOTPGroup>
+                  <InputOTPSlot index={0} />
+                  <InputOTPSlot index={1} />
+                  <InputOTPSlot index={2} />
+                </InputOTPGroup>
+                <InputOTPSeparator />
+                <InputOTPGroup>
+                  <InputOTPSlot index={3} />
+                  <InputOTPSlot index={4} />
+                  <InputOTPSlot index={5} />          
+                </InputOTPGroup>
+              </InputOTP>
+            </form>
           </CardContent>
           <CardFooter className='flex-col gap-2'>
             <div className='text-muted-foreground text-sm'>
