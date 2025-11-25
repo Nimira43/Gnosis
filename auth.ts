@@ -32,11 +32,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         if (!user) {
           throw new Error('Incorrect credentials.')
         } else {
-          const passwordCorrect = await compare(credentials.password as string, user.password!)
+          const passwordCorrect = await compare(
+            credentials.password as string, 
+            user.password!
+          )
+          
           if (!passwordCorrect) {
             throw new Error('Incorrect credentials')
           }
         }
+        
         return {
           id: user.id.toString(),
           email: user.email,

@@ -1,7 +1,12 @@
 'use server'
 
 import { signIn } from '@/auth'
+import db from '@/db/drizzle'
+import { users } from '@/db/usersSchema'
 import { passwordSchema } from '@/validation/passwordSchema'
+import { compare } from 'bcryptjs'
+import { eq } from 'drizzle-orm'
+import credentials from 'next-auth/providers/credentials'
 import { z } from 'zod'
 
 export const loginWithCredentials = async({ 
@@ -51,15 +56,21 @@ export const preLoginCheck = async ({
   const [user] = await db
     .select()
     .from(users)
-    .where(eq(users.email, credentials.email as string))
+    .where(eq(users.email, email))
   if (!user) {
     throw new Error('Incorrect credentials.')
   } else {
-    const passwordCorrect = await compare(credentials.password as string, user.password!)
+    const passwordCorrect = await compare(
+      password, 
+      user.password!
+    )
+
     if (!passwordCorrect) {
       throw new Error('Incorrect credentials')
     }
+  
   }
+  
   return {
     id: user.id.toString(),
     email: user.email,
