@@ -49,6 +49,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
               credentials.token as string, 
               user.twoFactorSecret ?? ''
             )
+
+            if (!tokenValid) {
+              throw new Error('Incorrect OTP')
+            }
           }
         }
 

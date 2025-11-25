@@ -66,20 +66,19 @@ export default function Login() {
 
   const handleOTPSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const response = await activate2fa(otp)
+    const response = await loginWithCredentials({
+      email: form.getValues('email'),
+      password: form.getValues('password'),
+      token: otp
+    })
 
     if (response?.error) {
-      toast({
-        variant: 'destructive',
-        title: response.message
+      form.setError('root', {
+        message: response.message,
       })
-      return
+    } else {
+      router.push('/my-account')
     }
-    toast({
-      className: 'bg-green-500 text-light',
-      title: 'Two-Factor Authentication has been enabled',
-    })
-    setIsActivated(true)
   }
 
   return (
