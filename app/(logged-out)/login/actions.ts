@@ -58,7 +58,10 @@ export const preLoginCheck = async ({
     .from(users)
     .where(eq(users.email, email))
   if (!user) {
-    throw new Error('Incorrect credentials.')
+    return {
+      error: true,
+      message: 'Incorrect credentials.'
+    }
   } else {
     const passwordCorrect = await compare(
       password, 
@@ -66,13 +69,10 @@ export const preLoginCheck = async ({
     )
 
     if (!passwordCorrect) {
-      throw new Error('Incorrect credentials')
+      return {
+        error: true,
+        message: 'Incorrect credentials.'
+      }
     }
-  
-  }
-  
-  return {
-    id: user.id.toString(),
-    email: user.email,
   }
 }
