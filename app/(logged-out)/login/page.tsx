@@ -37,6 +37,13 @@ export default function Login() {
       form.setError('root', {
         message: preLoginCheckResponse.message,
       })
+      return
+    }
+
+    if (preLoginCheckResponse.twoFactorActivated) {
+
+    } else {
+      
     }
 
     const response = await loginWithCredentials({
