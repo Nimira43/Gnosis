@@ -41,6 +41,12 @@ export const loginWithCredentials = async({
   }
 }
 
-export const preLoginCheck = async () => {
-  
+export const preLoginCheck = async ({
+  email,
+  password
+}: {
+  email: string
+  password: string
+}) => {
+
 }
