@@ -204,6 +204,7 @@ export default function Login() {
                 </InputOTPGroup>
               </InputOTP>
               <Button 
+                disabled={otp.length !== 6}
                 className='uppercase'
                 type='submit'
               >
