@@ -37,6 +37,7 @@ export const loginWithCredentials = async({
     await signIn('credentials', {
       email,
       password,
+      token,
       redirect: false
     })
   } catch(e) {

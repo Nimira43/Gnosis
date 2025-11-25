@@ -4,6 +4,7 @@ import db from './db/drizzle'
 import { eq } from 'drizzle-orm'
 import { users } from './db/usersSchema'
 import { compare } from 'bcryptjs'
+import { authenticator } from 'otplib'
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
@@ -22,13 +23,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     Credentials({
       credentials: {
         email: {},
-        password: {}
+        password: {},
+        token: {}
       },
       async authorize(credentials) {
         const [user] = await db
           .select()
           .from(users)
           .where(eq(users.email, credentials.email as string))
+
         if (!user) {
           throw new Error('Incorrect credentials.')
         } else {
@@ -40,8 +43,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           if (!passwordCorrect) {
             throw new Error('Incorrect credentials')
           }
+
+          if (user.twoFactorActivated) {
+            const tokenValid = authenticator.check(
+              credentials.token as string, 
+              user.twoFactorSecret ?? ''
+            )
+          }
         }
-        
+
         return {
           id: user.id.toString(),
           email: user.email,
