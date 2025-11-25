@@ -64,6 +64,24 @@ export default function Login() {
 
   const email = form.getValues('email')
 
+  const handleOTPSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const response = await activate2fa(otp)
+
+    if (response?.error) {
+      toast({
+        variant: 'destructive',
+        title: response.message
+      })
+      return
+    }
+    toast({
+      className: 'bg-green-500 text-light',
+      title: 'Two-Factor Authentication has been enabled',
+    })
+    setIsActivated(true)
+  }
+
   return (
     <main className='flex justify-center items-center min-h-screen'>
       {step === 1 && (
@@ -132,22 +150,19 @@ export default function Login() {
             <div className='text-muted-foreground text-sm'>
               Do not have an account?{' '}
               <Link
-              className='text-muted-foreground uppercase' 
+                className='text-muted-foreground uppercase' 
                 href='/register'
-                >
-                  Register
-                </Link>
+              >
+                Register
+              </Link>
             </div>
             <div className='text-muted-foreground text-sm'>
               Forgot password?{' '}
               <Link 
-                href={`
-                  /password-reset${
-                    email 
-                      ? `?email=${encodeURIComponent(email)}` 
-                      : "" 
-                  }
-                `}
+                href={`/password-reset${email 
+                  ? `?email=${encodeURIComponent(email)}` 
+                  : "" 
+                }`}
                 className='text-muted-foreground uppercase'
               >
                 Reset 
@@ -163,11 +178,14 @@ export default function Login() {
               One-Time Passcode
             </CardTitle>
             <CardDescription>
-              Enter the OTP from your Authenticator app.
+              Please enter the OTP from Google Authenticator...
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form>
+            <form 
+              className='flex flex-col gap-2'
+              onSubmit={handleOTPSubmit}
+            >
               <InputOTP 
                 maxLength={6}
                 value={otp}
@@ -185,34 +203,14 @@ export default function Login() {
                   <InputOTPSlot index={5} />          
                 </InputOTPGroup>
               </InputOTP>
+              <Button 
+                className='uppercase'
+                type='submit'
+              >
+                Verify OTP
+              </Button>
             </form>
           </CardContent>
-          <CardFooter className='flex-col gap-2'>
-            <div className='text-muted-foreground text-sm'>
-              Do not have an account?{' '}
-              <Link
-              className='text-muted-foreground uppercase' 
-                href='/register'
-                >
-                  Register
-                </Link>
-            </div>
-            <div className='text-muted-foreground text-sm'>
-              Forgot password?{' '}
-              <Link 
-                href={`
-                  /password-reset${
-                    email 
-                      ? `?email=${encodeURIComponent(email)}` 
-                      : "" 
-                  }
-                `}
-                className='text-muted-foreground uppercase'
-              >
-                Reset 
-              </Link>
-            </div>
-          </CardFooter>
         </Card>
       )}
     </main>

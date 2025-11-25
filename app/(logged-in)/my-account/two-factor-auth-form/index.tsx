@@ -106,7 +106,7 @@ export default function TwoFactorAuthForm({twoFactorActivated} : Props) {
               onSubmit={handleOTPSubmit}
             >
               <p className='text-xs text-muted-foreground'>
-                Please enter the one-time password from Google Authenticator...
+                Please enter the OTP from Google Authenticator...
               </p>
               <InputOTP 
                 maxLength={6}
