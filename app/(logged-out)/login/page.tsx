@@ -8,7 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Input } from '@/components/ui/input'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { loginWithCredentials } from './actions'
+import { loginWithCredentials, preLoginCheck } from './actions'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
@@ -28,6 +28,9 @@ export default function Login() {
   })
 
   const handleSubmit = async (data: z.infer<typeof formSchema>) => {
+    const preLoginCheckResponse = await preLoginCheck()
+
+
     const response = await loginWithCredentials({
       email: data.email,
       password: data.password
