@@ -39,5 +39,8 @@ export const loginWithCredentials = async({
       message: 'Incorrect email or password.'
     }
   }
+}
 
+export const preLoginCheck = async () => {
+  
 }
