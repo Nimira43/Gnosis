@@ -48,5 +48,20 @@ export const preLoginCheck = async ({
   email: string
   password: string
 }) => {
-
+  const [user] = await db
+    .select()
+    .from(users)
+    .where(eq(users.email, credentials.email as string))
+  if (!user) {
+    throw new Error('Incorrect credentials.')
+  } else {
+    const passwordCorrect = await compare(credentials.password as string, user.password!)
+    if (!passwordCorrect) {
+      throw new Error('Incorrect credentials')
+    }
+  }
+  return {
+    id: user.id.toString(),
+    email: user.email,
+  }
 }
