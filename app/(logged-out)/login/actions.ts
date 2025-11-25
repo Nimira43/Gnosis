@@ -6,15 +6,16 @@ import { users } from '@/db/usersSchema'
 import { passwordSchema } from '@/validation/passwordSchema'
 import { compare } from 'bcryptjs'
 import { eq } from 'drizzle-orm'
-import credentials from 'next-auth/providers/credentials'
 import { z } from 'zod'
 
 export const loginWithCredentials = async({ 
   email, 
-  password
+  password,
+  token
 }: {
   email: string
   password: string
+  token?: string
 }) => {
   const loginSchema = z.object({
     email: z.string().email(),
