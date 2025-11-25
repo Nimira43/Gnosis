@@ -33,6 +33,11 @@ export default function Login() {
       password: data.password
     })
 
+    if (preLoginCheckResponse.error) {
+      form.setError('root', {
+        message: preLoginCheckResponse.message,
+      })
+    }
 
     const response = await loginWithCredentials({
       email: data.email,
