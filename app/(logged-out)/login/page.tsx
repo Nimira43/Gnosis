@@ -43,7 +43,7 @@ export default function Login() {
     }
 
     if (preLoginCheckResponse.twoFactorActivated) {
-
+      setStep(2)
     } else {
       const response = await loginWithCredentials({
         email: data.email,
@@ -64,94 +64,97 @@ export default function Login() {
 
   return (
     <main className='flex justify-center items-center min-h-screen'>
-      <Card className='w-[350px] bg-grey-light'>
-        <CardHeader>
-          <CardTitle className='uppercase'>
-            Login
-          </CardTitle>
-          <CardDescription>
-            Login to your account.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(handleSubmit)}>
-              <fieldset
-                disabled={form.formState.isSubmitting}
-                className='flex flex-col gap-2'
-              >
-                <FormField
-                  control={form.control}
-                  name='email'
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>
-                        Email
-                      </FormLabel>
-                      <FormControl>
-                        <Input {...field} type='email' />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name='password'
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>
-                        Password
-                      </FormLabel>
-                      <FormControl>
-                        <Input {...field} type='password' />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                {!!form.formState.errors.root?.message && (
-                  <FormMessage>
-                    {form.formState.errors.root.message}
-                  </FormMessage>
-                )}
-                <Button 
-                  className='uppercase'
-                  type='submit'
+      {step === 1 && (
+        <Card className='w-[350px] bg-grey-light'>
+          <CardHeader>
+            <CardTitle className='uppercase'>
+              Login
+            </CardTitle>
+            <CardDescription>
+              Login to your account.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(handleSubmit)}>
+                <fieldset
+                  disabled={form.formState.isSubmitting}
+                  className='flex flex-col gap-2'
                 >
-                  Login
-                </Button>
-              </fieldset>
-            </form>
-          </Form>
-        </CardContent>
-        <CardFooter className='flex-col gap-2'>
-          <div className='text-muted-foreground text-sm'>
-            Do not have an account?{' '}
-            <Link
-            className='text-muted-foreground uppercase' 
-              href='/register'
+                  <FormField
+                    control={form.control}
+                    name='email'
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>
+                          Email
+                        </FormLabel>
+                        <FormControl>
+                          <Input {...field} type='email' />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name='password'
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>
+                          Password
+                        </FormLabel>
+                        <FormControl>
+                          <Input {...field} type='password' />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  {!!form.formState.errors.root?.message && (
+                    <FormMessage>
+                      {form.formState.errors.root.message}
+                    </FormMessage>
+                  )}
+                  <Button 
+                    className='uppercase'
+                    type='submit'
+                  >
+                    Login
+                  </Button>
+                </fieldset>
+              </form>
+            </Form>
+          </CardContent>
+          <CardFooter className='flex-col gap-2'>
+            <div className='text-muted-foreground text-sm'>
+              Do not have an account?{' '}
+              <Link
+              className='text-muted-foreground uppercase' 
+                href='/register'
+                >
+                  Register
+                </Link>
+            </div>
+            <div className='text-muted-foreground text-sm'>
+              Forgot password?{' '}
+              <Link 
+                href={`
+                  /password-reset${
+                    email 
+                      ? `?email=${encodeURIComponent(email)}` 
+                      : "" 
+                  }
+                `}
+                className='text-muted-foreground uppercase'
               >
-                Register
+                Reset 
               </Link>
-          </div>
-          <div className='text-muted-foreground text-sm'>
-            Forgot password?{' '}
-            <Link 
-              href={`
-                /password-reset${
-                  email 
-                    ? `?email=${encodeURIComponent(email)}` 
-                    : "" 
-                }
-              `}
-              className='text-muted-foreground uppercase'
-            >
-              Reset 
-            </Link>
-          </div>
-        </CardFooter>
-      </Card>
+            </div>
+          </CardFooter>
+        </Card>
+      )}
+      
     </main>
   )
 }
